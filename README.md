@@ -10,10 +10,10 @@ DataBase API Information
     
  - DB.Api
    - AccountMgr
-    - ProcLogin(String userId, String password) returns MemberBean
-     - 로그인 수행
-    - ProcRegister (MemberBean member) returns Result (success : 0, error : -1)
-     - 회원가입 수행
-    - getUserProjects (String id) returns ArrayList<ProjectBean>
-     - 유저에 해당되는 모든 프로젝트 정보 불러오기
+     - ProcLogin(String userId, String password) returns MemberBean
+        - 로그인 수행
+     - ProcRegister (MemberBean member) returns Result (success : 0, error : -1)
+        - 회원가입 수행
+     - getUserProjects (String id) returns ArrayList<ProjectBean>
+       - 유저에 해당되는 모든 프로젝트 정보 불러오기
   
