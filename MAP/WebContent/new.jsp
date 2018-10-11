@@ -8,20 +8,19 @@
 </head>
 <body>
 <h2>새 프로젝트 등록</h2>
-<form>
-<ul>
-<li>
-프로젝트 명
-</li>
-<li>
-과목<br>
-</li>
-<li>
-마감 일시<br>
-</li>
-<input type="submit" value="멤버 초대">
-<input type="submit" value="프로젝트 등록">
-</ul>
+	<ul>
+		<li>
+			프로젝트 명
+		</li>
+		<li>
+			과목
+		</li>
+		<li>
+			마감 일시
+		</li>
+		<input type="submit" value="멤버 초대">
+		<input type="submit" value="프로젝트 등록">
+	</ul>
 </form>
 </body>
 </html>
