@@ -1,4 +1,5 @@
 package db.api;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +43,7 @@ public class AccountMgr {
 			}
 			
 			//Set Query
-			String query = "select * from Member where userId=?,password=?;";
+			String query = "select * from member where userId=?,password=?;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(0, userId);
 			pstmt.setString(1, password);
