@@ -36,7 +36,7 @@ public class AccountMgr {
 			//INIT CONNECTION
 			Connection con = getConnection();
 			
-			//CONNECTION 유효 확인
+			//CONNECTION Check
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
@@ -50,7 +50,7 @@ public class AccountMgr {
 			//Send Query
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()==false) {
-				throw new Exception("검색 결과가 없습니다.");
+				throw new Exception("Result Is Null");
 			}
 			
 			member.setId(rs.getString("id"));
@@ -70,13 +70,13 @@ public class AccountMgr {
 			//INIT CONNECTION
 			Connection con = getConnection();
 			
-			//CONNECTION 유효 확인
+			//CONNECTION CHECK
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
 			
 			//Set Query
-			String query = "insert into Member values(\"?\",\"?\",\"?\",\"?\");";
+			String query = "insert into Member values(?,?,?,?);";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(0, member.getId());
 			pstmt.setString(1, member.getPassword());
@@ -100,7 +100,7 @@ public class AccountMgr {
 			//INIT CONNECTION
 			Connection con = getConnection();
 			
-			//CONNECTION 유효 확인
+			//CONNECTION CHECK
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
@@ -117,7 +117,7 @@ public class AccountMgr {
 				
 				ResultSet rs1 = pstmt.executeQuery();
 				if(rs1==null) {
-					throw new Exception("요청 정보가 Null 을 반환하였습니다.");
+					throw new Exception("Result is null");
 				}
 				
 				ProjectBean ps = new ProjectBean();
@@ -129,6 +129,39 @@ public class AccountMgr {
 				projects.add(ps);
 			}
 			return projects;
+		}
+		catch(Exception e) {
+			return null;
+		}
+	}
+	
+	public MemberBean getUserInformation(String userId) {
+		try {
+			PreparedStatement pstmt = null;
+			
+			//INIT CONNECTION
+			Connection con = getConnection();
+			
+			//CONNECTION CHECK
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			String query = "select * from member where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(0, userId);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs == null) {
+				throw new Exception("result is null");
+			}
+			
+			MemberBean member = new MemberBean();
+			member.setId(rs.getString("id"));
+			member.setPassword(rs.getString("password"));
+			member.setName(rs.getString("name"));
+			member.setEmail(rs.getString("email"));
+			return member;
 		}
 		catch(Exception e) {
 			return null;
