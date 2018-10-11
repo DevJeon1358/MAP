@@ -18,9 +18,19 @@ DataBase API Information
        - 유저에 해당되는 모든 프로젝트 정보 불러오기
      - getUserInformation(String userId) returns MemberBean
        - 유저 정보 불러오기
+     - quitProject(int projectId, String userId) returns Result (success : 0, error : -1)
+       - 프로젝트 탈퇴
        
    - ProjectMgr
      - getProjectInformation(int projectId) returns ProjectBean
         - 프로젝트 정보 불러오기
      - getProjectMembers(int projectId) returns MemberBean(ArrayList)
         - 프로젝트 구성원 불러오기
+     - addProjectMember(int projectId, String memberId) returns Result (success : 0, error : -1)
+        - 프로젝트 구성원 추가
+     - removeProjectMember(int projectId, String memberId) returns Result (success : 0, error : -1)
+        - 프로젝트 구성원 삭제
+     - addProject(ProjectBean pb) returns 추가된 프로젝트의 ID
+        - 프로젝트 추가
+     - removeProject(int projectId) returns Result (success : 0, error : -1)
+        - 프로젝트 삭제
