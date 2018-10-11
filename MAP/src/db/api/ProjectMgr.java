@@ -91,4 +91,97 @@ public class ProjectMgr {
 			return null;
 		}
 	}
+	
+	public int addProjectMember(int projectId, String memberId) {
+		try {
+			Connection con = getConnection();
+			if(con==null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			String query = "insert into projectmember values (?,?);";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(0, projectId);
+			pstmt.setString(1, memberId);
+			
+			pstmt.executeQuery();
+			
+			return 0;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	public int removeProjectMember(int projectId, String memberId) {
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			String query = "delete from projectmember where projectId=?,memberId=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(0, projectId);
+			pstmt.setString(1, memberId);
+			
+			pstmt.executeQuery();
+			
+			return 0;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	public int addProject(ProjectBean pb) {
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			
+			String query = "insert into project(name,subject,due) values(?,?,?);";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(0, pb.getName());
+			pstmt.setString(1, pb.getSubject());
+			pstmt.setDate(2, pb.getDue());
+			
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getInt("id");
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	public int removeProject(int projectId) {
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			
+			String query = "delete from project where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(0, projectId);
+			pstmt.executeQuery();
+			
+			query = "delect from projectmember where projectId=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(0, projectId);
+			pstmt.executeQuery();
+			
+			return 0;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
 }

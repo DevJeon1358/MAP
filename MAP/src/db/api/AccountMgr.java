@@ -76,7 +76,7 @@ public class AccountMgr {
 			}
 			
 			//Set Query
-			String query = "insert into Member values(?,?,?,?);";
+			String query = "insert into member values(?,?,?,?);";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(0, member.getId());
 			pstmt.setString(1, member.getPassword());
@@ -165,6 +165,17 @@ public class AccountMgr {
 		}
 		catch(Exception e) {
 			return null;
+		}
+	}
+	
+	public int quitProject(int projectId, String userId) {
+		try {
+			ProjectMgr pmgr = new ProjectMgr();
+			pmgr.removeProjectMember(projectId, userId);
+			return 0;
+		}
+		catch(Exception e) {
+			return -1;
 		}
 	}
 }
