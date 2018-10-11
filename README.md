@@ -1,4 +1,4 @@
-# Make-A-Face
+# MAP
 2018 DGSW 나르샤 - 2학기
 
 DataBase API Information
