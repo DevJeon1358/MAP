@@ -108,7 +108,7 @@ public class AccountMgr {
 			
 			String query = "select * from projectmember where memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, Id);
+			pstmt.setString(0, Id);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
