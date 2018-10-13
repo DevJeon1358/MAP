@@ -10,15 +10,9 @@
 <h2>새 프로젝트 등록</h2>
 <form action="new" method="post">
 	<ul>
-		<li>
-			프로젝트 명
-		</li>
-		<li>
-			과목
-		</li>
-		<li>
-			마감 일시
-		</li>
+		<li>프로젝트 명</li>
+		<li>과목</li>
+		<li>마감 일시</li>
 		<input type="submit" value="멤버 초대"><br>
 		<input type="submit" value="프로젝트 등록">
 	</ul>
