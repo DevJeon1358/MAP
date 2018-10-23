@@ -24,7 +24,6 @@ public class AccountMgr {
 			return con;
 		}
 		catch(Exception e) {
-			System.out.println(e);
 			return null;
 		}
 	}
@@ -50,18 +49,46 @@ public class AccountMgr {
 			
 			//Send Query
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()==false) {
+			if(rs.next()) {
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				member.setPassword(rs.getString("password"));
+				member.setEmail(rs.getString("email"));
+				return member;
+			}
+			else {
 				throw new Exception("Result Is Null");
 			}
-			
-			member.setId(rs.getString("id"));
-			member.setName(rs.getString("name"));
-			member.setPassword(rs.getString("password"));
-			member.setEmail(rs.getString("email"));
-			return member;
 		}
 		catch(Exception e) {
 			return null;
+		}
+	}
+	
+	public int checkIdExists(String Id) {
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			String query = "select * from member where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(0, Id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs==null || rs.next() == false) {
+				//Available
+				return 0;
+			}
+			else {
+				//Using
+				return 1;
+			}
+		}
+		catch(Exception e) {
+			return -1;
 		}
 	}
 	
@@ -74,6 +101,12 @@ public class AccountMgr {
 			//CONNECTION CHECK
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
+			}
+			
+			//ID Check
+			int ICheck = checkIdExists(member.getId());
+			if(ICheck == -1 || ICheck == 1) {
+				throw new Exception("ID is Using. Check ID Exist with method(checkIdExists)");
 			}
 			
 			//Set Query
@@ -108,7 +141,7 @@ public class AccountMgr {
 			
 			String query = "select * from projectmember where memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, Id);
+			pstmt.setString(1, Id);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -117,7 +150,7 @@ public class AccountMgr {
 				pstmt.setString(0, rs.getString("projectId"));
 				
 				ResultSet rs1 = pstmt.executeQuery();
-				if(rs1==null) {
+				if(rs1.next() == false) {
 					throw new Exception("Result is null");
 				}
 				
@@ -153,19 +186,44 @@ public class AccountMgr {
 			pstmt.setString(0, userId);
 			
 			ResultSet rs = pstmt.executeQuery();
-			if(rs == null) {
-				throw new Exception("result is null");
+			if(rs.next()) {
+				MemberBean member = new MemberBean();
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setName(rs.getString("name"));
+				member.setEmail(rs.getString("email"));
+				return member;
 			}
-			
-			MemberBean member = new MemberBean();
-			member.setId(rs.getString("id"));
-			member.setPassword(rs.getString("password"));
-			member.setName(rs.getString("name"));
-			member.setEmail(rs.getString("email"));
-			return member;
+			else {
+				throw new Exception("result is null");
+			}	
 		}
 		catch(Exception e) {
 			return null;
+		}
+	}
+	
+	public int updateUserInformation(MemberBean mb) {
+		try {
+			Connection con = getConnection();
+			if(con==null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			String query = "update member set password=? , name=? , email=? where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(0, mb.getPassword());
+			pstmt.setString(1, mb.getName());
+			pstmt.setString(2, mb.getEmail());
+			pstmt.setString(3, mb.getId());
+			
+			pstmt.executeQuery();
+			
+			return 0;
+		}
+		catch(Exception e) {
+			return -1;
 		}
 	}
 	

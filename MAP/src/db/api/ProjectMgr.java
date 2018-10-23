@@ -24,7 +24,6 @@ public class ProjectMgr {
 			return con;
 		}
 		catch(Exception e) {
-			System.out.println(e);
 			return null;
 		}
 	}
@@ -44,15 +43,16 @@ public class ProjectMgr {
 			pstmt.setInt(0, projectId);
 			
 			ResultSet rs = pstmt.executeQuery();
-			if(rs == null) {
+			if(rs.next()) {
+				project.setId(rs.getInt("id"));
+				project.setName(rs.getString("name"));
+				project.setSubject(rs.getString("subject"));
+				project.setDue(rs.getDate("due"));
+				return project;
+			}
+			else {
 				throw new Exception("No Result");
 			}
-			
-			project.setId(rs.getInt("id"));
-			project.setName(rs.getString("name"));
-			project.setSubject(rs.getString("subject"));
-			project.setDue(rs.getDate("due"));
-			return project;
 		}
 		catch(Exception e) {
 			return null;
@@ -152,7 +152,13 @@ public class ProjectMgr {
 			pstmt.setDate(2, pb.getDue());
 			
 			ResultSet rs = pstmt.executeQuery();
-			return rs.getInt("id");
+			if(rs.next()) {
+				return rs.getInt("id");
+			}
+			else {
+				throw new Exception("Unknown Error Throwed when adding project");
+			}
+			
 		}
 		catch(Exception e) {
 			return -1;
@@ -179,6 +185,32 @@ public class ProjectMgr {
 			pstmt.executeQuery();
 			
 			return 0;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	public int getUserProjectCount(int memberId) {
+		try {
+			Connection con = getConnection();
+			if(con==null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			PreparedStatement pstmt = null;
+			
+			String query = "select count(memberId) from projectmember where memberId=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(0, memberId);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(0);
+			}
+			else {
+				//Returns 0 if Member dosen't has project or Error
+				return 0;
+			}
 		}
 		catch(Exception e) {
 			return -1;
