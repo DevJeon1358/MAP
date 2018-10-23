@@ -191,7 +191,7 @@ public class ProjectMgr {
 		}
 	}
 	
-	public int getUserProjectCount(int memberId) {
+	public int getUserProjectCount(String memberId) {
 		try {
 			Connection con = getConnection();
 			if(con==null) {
@@ -202,7 +202,7 @@ public class ProjectMgr {
 			
 			String query = "select count(memberId) from projectmember where memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, memberId);
+			pstmt.setString(0, memberId);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(0);
