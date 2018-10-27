@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import db.api.AccountMgr;
+import db.api.ProjectMgr;
 import db.bean.MemberBean;
 import db.bean.ProjectBean;
 
@@ -48,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		AccountMgr account = new AccountMgr();
+		ProjectMgr pm = new ProjectMgr();
 		MemberBean member = account.getUserInformation(userid);
 		
 		if(member != null) {
@@ -55,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", member);
 				
-				ArrayList<ProjectBean> projectlist = account.getUserProjects(userid);
+				ArrayList<ProjectBean> projectlist = pm.getUserProjects(userid);
 				session.setAttribute("projectlist", projectlist);
 				
 				request.getRequestDispatcher("home.jsp").forward(request, response);

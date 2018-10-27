@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import db.api.AccountMgr;
+import db.api.ProjectMgr;
 import db.bean.MemberBean;
 import db.bean.ProjectBean;
 
@@ -38,7 +39,7 @@ public class HomeServlet extends HttpServlet {
 		MemberBean member = (MemberBean)session.getAttribute("user");
 		
 		if(member != null) {
-			AccountMgr pm = new AccountMgr();
+			ProjectMgr pm = new ProjectMgr();
 			ArrayList<ProjectBean> list = pm.getUserProjects(member.getId());
 			
 			session.setAttribute("projectlist", list);

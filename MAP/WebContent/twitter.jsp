@@ -13,6 +13,11 @@
 </c:if>
 <jsp:include page = "head.jsp" flush = "false"/>
 <h1>타임라인</h1>
+
+<c:if test="${empty timeline}">
+	게시글이 없습니다.
+</c:if>
+<c:if test="${not empty timeline}">
 <table>
 		<thead>
 			<tr>
@@ -39,5 +44,6 @@
 		<li>다시말해서 전문가를 더욱 전문가답게 만드는 혁신에 머물고 있는 것이죠.</li>
 	<hr>
 </ul>
+</c:if>
 </body>
 </html>
