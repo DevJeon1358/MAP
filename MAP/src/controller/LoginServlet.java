@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
-		System.out.println(userid);
+		
 		AccountMgr account = new AccountMgr();
 		MemberBean member = account.getUserInformation(userid);
 		
@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 				ArrayList<ProjectBean> projectlist = account.getUserProjects(userid);
 				session.setAttribute("projectlist", projectlist);
 				
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				request.getRequestDispatcher("main.jsp").forward(request, response);
 				return;
 			}
 		}
