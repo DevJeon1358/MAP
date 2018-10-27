@@ -32,15 +32,16 @@
 				jQuery('#endtime').datetimepicker();
 				
 	    	    });
+	    	    
+	    	    function popup(){
+	    	    	window.open('searchmember');
+	    	    }
 	
 	        </script>        
 	     <li>멤버 초대</li>
-	     <input type="text" name="student">
-	     <input type="button" value="검색">
-	     <script>
-	     	
-	     </script>
-	     	     
+	     <input type="text" value="검색" onfocus="this.value=''" onclick="popup();">
+	        
+	    
 	</ul>
 </body>
 </html>
