@@ -48,6 +48,7 @@ public class ProjectMgr {
 				project.setName(rs.getString("name"));
 				project.setSubject(rs.getString("subject"));
 				project.setDue(rs.getDate("due"));
+				project.setCreator(rs.getString("creator"));
 				return project;
 			}
 			else {
@@ -105,7 +106,7 @@ public class ProjectMgr {
 			pstmt.setInt(1, projectId);
 			pstmt.setString(2, memberId);
 			
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 			return projectId;
 		}
@@ -152,7 +153,7 @@ public class ProjectMgr {
 			pstmt.setInt(1, projectId);
 			pstmt.setString(2, memberId);
 			
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 			return 0;
 		}
@@ -175,15 +176,19 @@ public class ProjectMgr {
 			pstmt.setString(1, pb.getName());
 			pstmt.setString(2, pb.getSubject());
 			pstmt.setTimestamp(3, new java.sql.Timestamp(pb.getDue().getTime()));
+			pstmt.executeUpdate();
 			
+			query = "select * from project where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pb.getId());
 			ResultSet rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				return rs.getInt("id");
 			}
 			else {
-				throw new Exception("Unknown Error Throwed when adding project");
+				return -1;
 			}
-			
 		}
 		catch(Exception e) {
 			return -1;
@@ -202,12 +207,12 @@ public class ProjectMgr {
 			String query = "delete from project where id=?;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectId);
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
-			query = "delect from projectmember where projectId=?;";
+			query = "delete from projectmember where projectId=?;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, projectId);
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 			return 0;
 		}

@@ -248,7 +248,7 @@ public class AccountMgr {
 			pstmt.setString(3, mb.getEmail());
 			pstmt.setString(4, mb.getId());
 			
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 			return 0;
 		}
