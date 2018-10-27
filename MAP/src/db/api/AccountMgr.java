@@ -117,9 +117,7 @@ public class AccountMgr {
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getEmail());
 			
-			pstmt.executeQuery();
-			
-			return 0;
+			return pstmt.executeUpdate();
 		}
 		catch(Exception e) {
 			return -1;
