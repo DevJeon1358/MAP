@@ -8,6 +8,8 @@
 </head>
 <body>
 	${user.id} 님 
-	<input type="submit" value="로그아웃"/>
+	<form action="logout" method="post">
+		<input type ="submit" value="로그아웃">
+	</form>
 </body>
 </html>
