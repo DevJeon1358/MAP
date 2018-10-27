@@ -15,8 +15,6 @@
 	PW <input type="password" name="password"> <br>
 	이름 <input type="text" name="name"> <br>
 	E-Mail <input type="text" name="email"> <br>
-</form>
-<form action="home" method="post">
 	<input type="submit" value="회원가입">
 </form>
 </body>
