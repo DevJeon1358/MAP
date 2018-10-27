@@ -126,6 +126,38 @@ public class AccountMgr {
 		}
 	}
 	
+	public ArrayList<MemberBean> searchMember(String str){
+		PreparedStatement pstmt = null;
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			
+			
+			String query = "select * from memver where id=? or email=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, str);
+			pstmt.setString(2, str);
+			
+			ResultSet rs = pstmt.executeQuery();
+			ArrayList<MemberBean> result = new ArrayList<MemberBean>();
+			while(rs.next()) {
+				MemberBean mb = new MemberBean();
+				mb.setId(rs.getString("id"));
+				mb.setPassword(rs.getString("password"));
+				mb.setName(rs.getString("name"));
+				mb.setEmail(rs.getString("email"));
+				
+				result.add(mb);
+			}
+			return result;
+		}
+		catch(Exception e) {
+			return null;
+		}
+	}
+	
 	public ArrayList<ProjectBean> getUserProjects(String Id){
 		try {
 			ArrayList<ProjectBean> projects = new ArrayList<ProjectBean>();
