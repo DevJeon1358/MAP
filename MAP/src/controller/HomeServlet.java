@@ -39,7 +39,6 @@ public class HomeServlet extends HttpServlet {
 		MemberBean member = (MemberBean)session.getAttribute("user");
 		
 		if(member != null) {
-			AccountMgr account = new AccountMgr();
 			ProjectMgr pm = new ProjectMgr();
 			ArrayList<ProjectBean> list = pm.getUserProjects(member.getId());
 			
