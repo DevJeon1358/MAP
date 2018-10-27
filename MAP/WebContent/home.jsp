@@ -11,8 +11,13 @@
 <c:if test="${empty user}">
 	<c:redirect url="login.jsp"/>
 </c:if>
+<jsp:include page="head.jsp" flush="flase"/>
 
 <h1>프로젝트 리스트</h1>
+<c:if test="${empty projectlist}">
+	참여중인 프로젝트가 없습니다.
+</c:if>
+<c:if test="${not empty projectlist}">
 <ul>
 <!-- 여기서부터  -->
 <li>
@@ -25,8 +30,10 @@
 </li>
 <!-- 여기까지 -->
 </ul>
-<form action="logout" method="post">
-	<input type ="submit" value="로그아웃">
+</c:if>
+<form action="new" method="get">
+	<input type="submit" value="프로젝트 등록">
 </form>
+
 </body>
 </html>
