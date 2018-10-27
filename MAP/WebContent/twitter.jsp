@@ -11,7 +11,6 @@
 <c:if test="${empty user}">
 	<c:redirect url="login.jsp"/>
 </c:if>
-
 <jsp:include page = "head.jsp" flush = "false"/>
 <h1>타임라인</h1>
 <table>

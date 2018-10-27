@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:if test="${empty user}">
+	<c:redirect url="login.jsp"/>
+</c:if>
+
+<jsp:include page="head.jsp" flush="false"/>
 <h1>문서</h1>
 <form action="file" method="post">
 	<input type="submit" value="업로드">
 </form>
 <form action="delfile" method="post">
-	<input type="submit" value="삭제">
 	<table>
 		<thead>
 			<tr>
@@ -36,6 +41,7 @@
 			<!-- 여기까지 루프 -->
 		</tbody>
 	</table>
+	<input type="submit" value="삭제">
 </form>
 </body>
 </html>
