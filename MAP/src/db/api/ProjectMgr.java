@@ -221,29 +221,46 @@ public class ProjectMgr {
 		}
 	}
 	
-	public int getUserProjectCount(String memberId) {
+	public ArrayList<ProjectBean> getUserProjects(String Id){
 		try {
+			ArrayList<ProjectBean> projects = new ArrayList<ProjectBean>();
+			PreparedStatement pstmt = null;
+			
+			//INIT CONNECTION
 			Connection con = getConnection();
-			if(con==null) {
+			
+			//CONNECTION CHECK
+			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
 			
-			PreparedStatement pstmt = null;
-			
-			String query = "select count(memberId) from projectmember where memberId=?;";
+			String query = "select * from projectmember where memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, memberId);
+			pstmt.setString(1, Id);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt(0);
+			
+			while(rs.next()) {
+				String query2 = "select * from project where id=?;";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setString(1, rs.getString("projectId"));
+				
+				ResultSet rs1 = pstmt.executeQuery();
+				if(rs1.next() == false) {
+					throw new Exception("Result is null");
+				}
+				
+				ProjectBean ps = new ProjectBean();
+				ps.setId(rs1.getInt("Id"));
+				ps.setName(rs.getString("name"));
+				ps.setSubject(rs.getString("subject"));
+				ps.setDue(rs.getDate("due"));
+				
+				projects.add(ps);
 			}
-			else {
-				//Returns 0 if Member dosen't has project or Error
-				return 0;
-			}
+			return projects;
 		}
 		catch(Exception e) {
-			return -1;
+			return null;
 		}
 	}
 }
