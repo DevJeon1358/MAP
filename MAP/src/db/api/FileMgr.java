@@ -118,7 +118,7 @@ public class FileMgr {
 		}
 	}
 	
-	public int deletefile(int fileId) {
+	public int deleteFile(int fileId) {
 		try {
 			Connection con = getConnection();
 			if(con == null) {
