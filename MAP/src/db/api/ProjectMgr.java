@@ -40,7 +40,7 @@ public class ProjectMgr {
 			
 			String query = "select * from project where id=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
+			pstmt.setInt(1, projectId);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -70,7 +70,7 @@ public class ProjectMgr {
 			ArrayList<MemberBean> members = new ArrayList<MemberBean>();
 			String query = "select * from projectmember where projectId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
+			pstmt.setInt(1, projectId);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs==null) {
@@ -102,8 +102,8 @@ public class ProjectMgr {
 			PreparedStatement pstmt = null;
 			String query = "insert into projectmember values (?,?);";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1, projectId);
+			pstmt.setString(2, memberId);
 			
 			pstmt.executeQuery();
 			
@@ -124,8 +124,8 @@ public class ProjectMgr {
 			PreparedStatement pstmt = null;
 			String query = "delete from projectmember where projectId=?,memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1, projectId);
+			pstmt.setString(2, memberId);
 			
 			pstmt.executeQuery();
 			
@@ -147,9 +147,9 @@ public class ProjectMgr {
 			
 			String query = "insert into project(name,subject,due) values(?,?,?);";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, pb.getName());
-			pstmt.setString(1, pb.getSubject());
-			pstmt.setDate(2, pb.getDue());
+			pstmt.setString(1, pb.getName());
+			pstmt.setString(2, pb.getSubject());
+			pstmt.setDate(3, pb.getDue());
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -176,12 +176,12 @@ public class ProjectMgr {
 			
 			String query = "delete from project where id=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
+			pstmt.setInt(1, projectId);
 			pstmt.executeQuery();
 			
 			query = "delect from projectmember where projectId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(0, projectId);
+			pstmt.setInt(1, projectId);
 			pstmt.executeQuery();
 			
 			return 0;
@@ -202,7 +202,7 @@ public class ProjectMgr {
 			
 			String query = "select count(memberId) from projectmember where memberId=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, memberId);
+			pstmt.setString(1, memberId);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(0);

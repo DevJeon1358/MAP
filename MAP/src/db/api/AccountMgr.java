@@ -44,8 +44,8 @@ public class AccountMgr {
 			//Set Query
 			String query = "select * from member where userId=?,password=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, userId);
-			pstmt.setString(1, password);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, password);
 			
 			//Send Query
 			ResultSet rs = pstmt.executeQuery();
@@ -75,7 +75,7 @@ public class AccountMgr {
 			PreparedStatement pstmt = null;
 			String query = "select * from member where id=?";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, Id);
+			pstmt.setString(1, Id);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs==null || rs.next() == false) {
@@ -106,16 +106,16 @@ public class AccountMgr {
 			//ID Check
 			int ICheck = checkIdExists(member.getId());
 			if(ICheck == -1 || ICheck == 1) {
-				throw new Exception("ID is Using. Check ID Exist with method(checkIdExists)");
+				return -2;
 			}
 			
 			//Set Query
 			String query = "insert into member values(?,?,?,?);";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, member.getId());
-			pstmt.setString(1, member.getPassword());
-			pstmt.setString(2, member.getName());
-			pstmt.setString(3, member.getEmail());
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPassword());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, member.getEmail());
 			
 			pstmt.executeQuery();
 			
@@ -147,7 +147,7 @@ public class AccountMgr {
 			while(rs.next()) {
 				String query2 = "select * from project where id=?;";
 				pstmt = con.prepareStatement(query2);
-				pstmt.setString(0, rs.getString("projectId"));
+				pstmt.setString(1, rs.getString("projectId"));
 				
 				ResultSet rs1 = pstmt.executeQuery();
 				if(rs1.next() == false) {
@@ -183,7 +183,7 @@ public class AccountMgr {
 			
 			String query = "select * from member where id=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, userId);
+			pstmt.setString(1, userId);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -213,10 +213,10 @@ public class AccountMgr {
 			PreparedStatement pstmt = null;
 			String query = "update member set password=? , name=? , email=? where id=?;";
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(0, mb.getPassword());
-			pstmt.setString(1, mb.getName());
-			pstmt.setString(2, mb.getEmail());
-			pstmt.setString(3, mb.getId());
+			pstmt.setString(1, mb.getPassword());
+			pstmt.setString(2, mb.getName());
+			pstmt.setString(3, mb.getEmail());
+			pstmt.setString(4, mb.getId());
 			
 			pstmt.executeQuery();
 			
