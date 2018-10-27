@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="head.jsp" flush="false"/>
+<c:if test="${not empty user}">
+	<c:redirect url="main.jsp"/>
+</c:if>
 <h1>로그인</h1>
 <form action="login" method="post">
 	ID <input type="text" name="userid"> <br>
