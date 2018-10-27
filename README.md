@@ -26,6 +26,8 @@ DataBase API Information
        - 사용자 정보 업데이트
      - checkIdExists(String Id) returns Result (사용가능 : 0, 사용불가 : 1, 오류: -1)
        - 아이디가 사용중인지 확인
+     - searchMember(String str) returns MemberBean(ArrayList)
+       - str(Id or Email) 에 해당되는 유저 검색
        
    - ProjectMgr
      - getProjectInformation(int projectId) returns ProjectBean
