@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 				ArrayList<ProjectBean> projectlist = account.getUserProjects(userid);
 				session.setAttribute("projectlist", projectlist);
 				
-				request.getRequestDispatcher("main.jsp").forward(request, response);
+				request.getRequestDispatcher("home.jsp").forward(request, response);
 				return;
 			}
 		}
