@@ -149,7 +149,7 @@ public class ProjectMgr {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, pb.getName());
 			pstmt.setString(2, pb.getSubject());
-			pstmt.setDate(3, pb.getDue());
+			pstmt.setTimestamp(3, new java.sql.Timestamp(pb.getDue().getTime()));
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
