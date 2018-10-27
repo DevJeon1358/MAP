@@ -40,13 +40,13 @@ public class JoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String userid = request.getParameter("userid");
+		String id = request.getParameter("userid");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 
 		MemberBean member = new MemberBean();
-		member.setId(userid);
+		member.setId(id);
 		member.setPassword(password);
 		member.setName(name);
 		member.setEmail(email);
