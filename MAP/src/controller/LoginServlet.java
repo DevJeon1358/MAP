@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
-		System.out.println(userid);
+		
 		AccountMgr account = new AccountMgr();
 		MemberBean member = account.getUserInformation(userid);
 		
