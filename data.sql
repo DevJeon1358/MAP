@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS `file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uploaderId` varchar(45) NOT NULL,
   `projectId` int(11) NOT NULL,
-  `originalFilename` varchar(45) NOT NULL,
-  `savedFilename` varchar(45) NOT NULL,
+  `originalFilename` varchar(300) NOT NULL,
+  `savedFilename` varchar(300) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `memo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -33,9 +33,8 @@ CREATE TABLE IF NOT EXISTS `file` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 map.file:~2 rows (대략적) 내보내기
-DELETE FROM `file`;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
-INSERT INTO `file` (`id`, `uploaderId`, `projectId`, `originalFilename`, `savedFilename`, `timestamp`, `memo`) VALUES
+INSERT IGNORE INTO `file` (`id`, `uploaderId`, `projectId`, `originalFilename`, `savedFilename`, `timestamp`, `memo`) VALUES
 	(1, '1', 1, 'test1.png', 'test(1).png', '2018-10-27 11:43:31', 'TEST 파일'),
 	(2, '1', 2, 'test1.png', 'test(2).png', '2018-10-27 11:44:00', 'TEST 파일 2');
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
@@ -50,9 +49,8 @@ CREATE TABLE IF NOT EXISTS `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 map.member:~0 rows (대략적) 내보내기
-DELETE FROM `member`;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` (`id`, `password`, `name`, `email`) VALUES
+INSERT IGNORE INTO `member` (`id`, `password`, `name`, `email`) VALUES
 	('1', 'test', 'test', 'test@test.com');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
@@ -68,10 +66,9 @@ CREATE TABLE IF NOT EXISTS `project` (
   CONSTRAINT `FK_project_member` FOREIGN KEY (`creator`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 map.project:~0 rows (대략적) 내보내기
-DELETE FROM `project`;
+-- 테이블 데이터 map.project:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` (`id`, `name`, `subject`, `due`, `creator`) VALUES
+INSERT IGNORE INTO `project` (`id`, `name`, `subject`, `due`, `creator`) VALUES
 	(1, 'TEST', '국어', '2018-10-27 14:42:39', '1'),
 	(2, 'TEST2', '국어', '2018-10-27 14:42:57', '1');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
@@ -87,9 +84,8 @@ CREATE TABLE IF NOT EXISTS `projectmember` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 map.projectmember:~2 rows (대략적) 내보내기
-DELETE FROM `projectmember`;
 /*!40000 ALTER TABLE `projectmember` DISABLE KEYS */;
-INSERT INTO `projectmember` (`projectId`, `memberId`) VALUES
+INSERT IGNORE INTO `projectmember` (`projectId`, `memberId`) VALUES
 	(1, '1'),
 	(2, '1');
 /*!40000 ALTER TABLE `projectmember` ENABLE KEYS */;
@@ -109,9 +105,8 @@ CREATE TABLE IF NOT EXISTS `timeline` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 map.timeline:~0 rows (대략적) 내보내기
-DELETE FROM `timeline`;
 /*!40000 ALTER TABLE `timeline` DISABLE KEYS */;
-INSERT INTO `timeline` (`id`, `projectId`, `memberId`, `comment`, `timestamp`) VALUES
+INSERT IGNORE INTO `timeline` (`id`, `projectId`, `memberId`, `comment`, `timestamp`) VALUES
 	(1, 1, '1', 'TEST', '2018-10-11 16:54:36');
 /*!40000 ALTER TABLE `timeline` ENABLE KEYS */;
 
