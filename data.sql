@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `file` (
   KEY `FK_File_projectId_Project_id` (`projectId`),
   CONSTRAINT `FK_File_projectId_Project_id` FOREIGN KEY (`projectId`) REFERENCES `project` (`id`),
   CONSTRAINT `FK_File_uploaderId_Member_id` FOREIGN KEY (`uploaderId`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 map.file:~0 rows (대략적) 내보내기
+-- 테이블 데이터 map.file:~2 rows (대략적) 내보내기
 DELETE FROM `file`;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
 INSERT INTO `file` (`id`, `uploaderId`, `projectId`, `originalFilename`, `savedFilename`, `timestamp`, `memo`) VALUES
@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
+  `email` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 map.member:~1 rows (대략적) 내보내기
+-- 테이블 데이터 map.member:~0 rows (대략적) 내보내기
 DELETE FROM `member`;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `email`) VALUES
@@ -62,15 +62,18 @@ CREATE TABLE IF NOT EXISTS `project` (
   `name` varchar(45) NOT NULL,
   `subject` varchar(45) NOT NULL,
   `due` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `creator` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_project_member` (`creator`),
+  CONSTRAINT `FK_project_member` FOREIGN KEY (`creator`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 map.project:~0 rows (대략적) 내보내기
 DELETE FROM `project`;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` (`id`, `name`, `subject`, `due`) VALUES
-	(1, 'TEST', '국어', '2018-12-25 16:15:00'),
-	(2, 'TEST2', '수학', '2018-12-25 13:40:00');
+INSERT INTO `project` (`id`, `name`, `subject`, `due`, `creator`) VALUES
+	(1, 'TEST', '국어', '2018-10-27 14:42:39', '1'),
+	(2, 'TEST2', '국어', '2018-10-27 14:42:57', '1');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 
 -- 테이블 map.projectmember 구조 내보내기
@@ -83,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `projectmember` (
   CONSTRAINT `FK_ProjectMember_projectId_Project_id` FOREIGN KEY (`projectId`) REFERENCES `project` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 map.projectmember:~0 rows (대략적) 내보내기
+-- 테이블 데이터 map.projectmember:~2 rows (대략적) 내보내기
 DELETE FROM `projectmember`;
 /*!40000 ALTER TABLE `projectmember` DISABLE KEYS */;
 INSERT INTO `projectmember` (`projectId`, `memberId`) VALUES
