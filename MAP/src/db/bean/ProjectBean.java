@@ -7,7 +7,14 @@ public class ProjectBean {
 	private String name;
 	private String subject;
 	private Date due;
+	private String creator;
 	
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
 	public int getId() {
 		return id;
 	}
@@ -32,6 +39,4 @@ public class ProjectBean {
 	public void setDue(Date due) {
 		this.due = due;
 	}
-	
-	
 }

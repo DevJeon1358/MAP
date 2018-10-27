@@ -107,7 +107,32 @@ public class ProjectMgr {
 			
 			pstmt.executeQuery();
 			
-			return 0;
+			return projectId;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+	
+	public int getProjectId(String projectName, String userId) {
+		PreparedStatement pstmt = null;
+		try {
+			Connection con = getConnection();
+			if(con == null) {
+				throw new Exception("DB INIT FAILED");
+			}
+			String query = "select * from project where name=?,creator=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, projectName);
+			pstmt.setString(2, userId);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("id");
+			}
+			else {
+				return -1;
+			}
 		}
 		catch(Exception e) {
 			return -1;
