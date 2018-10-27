@@ -12,7 +12,7 @@
 	<c:redirect url="login.jsp"/>
 </c:if>
 
-${user.id }<br>
+${user.name} 님의 프로젝트<br>
 <h1>프로젝트 리스트</h1>
 <ul>
 <!-- 여기서부터  -->
