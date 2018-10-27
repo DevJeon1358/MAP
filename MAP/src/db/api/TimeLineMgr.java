@@ -30,29 +30,6 @@ public class TimeLineMgr {
 		}
 	}
 	
-	public Date getDueTime(int projectId) {
-		try {
-			Connection con = getConnection();
-			if(con==null) {
-				throw new Exception("DB 연결 실패"); 
-			}
-			
-			PreparedStatement pstmt = null;
-			String query = "select due from project where id=?;";
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1,projectId);
-			
-			ResultSet rs = pstmt.executeQuery();
-			if(rs==null) {
-				throw new Exception("결과가 읎다");
-			}
-			return rs.getDate("due");
-		}
-		catch(Exception e){
-			return null;
-		}
-	}
-	
 	public ArrayList<TimeLineBean> getComment(int projectId) {
 		try {
 			Connection con = getConnection();
@@ -97,11 +74,12 @@ public class TimeLineMgr {
 			pstmt.setInt(1,projectId);
 			pstmt.setString(2,memberId);
 			pstmt.setString(3,comment);
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
+			return 0;
 		}
 		catch(Exception e) {
-			return 0;
+			return -1;
 		}
 	}
 }

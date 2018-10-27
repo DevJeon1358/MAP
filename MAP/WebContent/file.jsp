@@ -14,7 +14,7 @@
 
 <jsp:include page="head.jsp" flush="false"/>
 <h1>문서</h1>
-<form action="file" method="post">
+<form action="file" method="post" enctype="multipart/form-data">
 	<input type="submit" value="업로드">
 </form>
 <form action="delfile" method="post">
