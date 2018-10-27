@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${user.id}
+	${user.id} 님 
+	<input type="submit" value="로그아웃"/>
 </body>
 </html>
