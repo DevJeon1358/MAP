@@ -57,7 +57,7 @@ public class AccountMgr {
 				return member;
 			}
 			else {
-				throw new Exception("Result Is Null");
+				return null;
 			}
 		}
 		catch(Exception e) {
@@ -195,7 +195,7 @@ public class AccountMgr {
 				return member;
 			}
 			else {
-				throw new Exception("result is null");
+				return null;
 			}	
 		}
 		catch(Exception e) {

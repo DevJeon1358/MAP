@@ -51,7 +51,7 @@ public class ProjectMgr {
 				return project;
 			}
 			else {
-				throw new Exception("No Result");
+				return null;
 			}
 		}
 		catch(Exception e) {

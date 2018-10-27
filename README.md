@@ -41,6 +41,6 @@ DataBase API Information
      - removeProject(int projectId) returns Result (success : 0, error : -1)
         - 프로젝트 삭제
      - getUserProjectCount(String memberId) returns ProjectCount
-        - 특정 사용자가 소속되어 있는 프로젝트 카운트 
+        - 특정 사용자가 소속되어 있는 프로젝트 카운트
         
         
