@@ -41,6 +41,7 @@ public class FileMgr {
 			
 			pstmt.setInt(1, projectId);
 			ResultSet rs = pstmt.executeQuery();
+
 			ArrayList<FileBean> res = new ArrayList<FileBean>();
 			while(rs.next()) {
 				FileBean fb = new FileBean();
@@ -54,7 +55,6 @@ public class FileMgr {
 				
 				res.add(fb);
 			}
-			
 			return res;
 		}
 		catch(Exception e) {
@@ -73,8 +73,9 @@ public class FileMgr {
 			String query = "select * from file where id=?;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fileId);
-			
+
 			ResultSet rs = pstmt.executeQuery();
+
 			if(rs.next()) {
 				FileBean fb = new FileBean();
 				fb.setId(rs.getInt("id"));
@@ -101,6 +102,7 @@ public class FileMgr {
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
+
 			String query = "insert into file (uploaderId, projectId, originalFilename, memo, savedFilename) values(?,?,?,?);";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, fb.getUploaderId());
@@ -129,7 +131,6 @@ public class FileMgr {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fileId);
 			pstmt.executeUpdate();
-			
 			return 0;
 		}
 		catch(Exception e) {
