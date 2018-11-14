@@ -4,3 +4,5 @@ MAP/src/db/.idea/modules.xml
 MAP/src/db/.idea/misc.xml
 MAP/src/db/.idea/db.iml
 MAP/src/controller/NewServlet.java.rej
+*.class
+*.classpath
