@@ -124,7 +124,7 @@ public class AccountMgr {
 		}
 	}
 	
-	public ArrayList<MemberBean> searchMember(String query){
+	public ArrayList<MemberBean> searchMember(String str){
 		PreparedStatement pstmt = null;
 		try {
 			Connection con = getConnection();
