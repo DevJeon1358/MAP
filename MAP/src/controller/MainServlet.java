@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.api.ProjectMgr;
 import db.bean.ProjectBean;
@@ -31,14 +32,12 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userid = request.getParameter("userid");
-		String due = request.getParameter("endtime");
-		String projectname = request.getParameter("projectname");
-		String subject = request.getParameter("subject");
-		String memberStr = request.getParameter("members");
+		String projectid = request.getParameter("projectid");
 		
 		ProjectMgr pm = new ProjectMgr();
-		
+		ArrayList<ProjectBean> projectlist = pm.getUserProjects(projectid);
+		HttpSession session = request.getSession();
+		session.setAttribute("projectlist", projectlist);
 		
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
