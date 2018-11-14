@@ -24,10 +24,10 @@
 	<input type="submit" value="검색">
 </form>
 
-<input type="radio" name="memberid" value="aaa" class="radio">aaa
-<input type="radio" name="memberid" value="bbb" class="radio">bbb
-<c:if test="${empty searchresult}">
-	
+<c:if test="${not empty searchresult}">
+	<c:forEach var="search" items="${searchresult}">
+	<input type="radio" name="memberid" value="${search.id}" class="radio">${search.id}
+	</c:forEach>
 </c:if>
 </body>
 </html>

@@ -39,8 +39,8 @@
 	
 	        </script>        
 	     <li>멤버 초대</li>
-	     <input type="text" id="members" name="members" value="검색" onfocus="this.value=''" onclick="popup();">
-	        
+	     <input type="text" id="members" name="members" value="" onclick="popup();">
+	     <input type="submit" value="등록">
 	    
 	</ul>
 </body>
