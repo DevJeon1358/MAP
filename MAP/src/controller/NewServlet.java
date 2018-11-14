@@ -47,6 +47,7 @@ public class NewServlet extends HttpServlet {
 		String name = request.getParameter("projectname");
 		String subject = request.getParameter("subject");
 		String due = request.getParameter("endtime");
+		System.out.println(due);
 		Date date;
 		try {
 			date = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(due);
@@ -66,15 +67,23 @@ public class NewServlet extends HttpServlet {
 		
 		ProjectMgr pm = new ProjectMgr();
 		int projectid = pm.addProject(project);
+		System.out.println("projectid" + projectid);
+		
+		pm.addProjectMember(projectid, user.getId());
 		
 		// 프로젝트 멤버 추가하기
 		String memberStr = request.getParameter("members"); //  id;id;id;
-		String[] members = memberStr.split(";");
-		for(int i = 0; i < members.length; i++)
-			pm.addProjectMember(projectid, members[i]);
+		if(memberStr != null) {
+			String[] members = memberStr.split(";");
+			if(members != null) {
+				for(int i = 0; i < members.length; i++) {
+					pm.addProjectMember(projectid, members[i]);
+				}
+			}
+		}
 		
 		// home으로 redirect
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		request.getRequestDispatcher("home").forward(request, response);
 	}
 
 }
