@@ -250,10 +250,11 @@ public class ProjectMgr {
 				}
 				
 				ProjectBean ps = new ProjectBean();
-				ps.setId(rs1.getInt("Id"));
+				ps.setId(rs1.getInt("id"));
 				ps.setName(rs.getString("name"));
 				ps.setSubject(rs.getString("subject"));
 				ps.setDue(rs.getDate("due"));
+				ps.setCreator(rs.getString("creator"));
 				
 				projects.add(ps);
 			}
