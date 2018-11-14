@@ -133,7 +133,7 @@ public class AccountMgr {
 			}
 			
 			
-			String query = "select * from memver where id=? or email=?;";
+			String query = "select * from member where id=? or email=?;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, str);
 			pstmt.setString(2, str);
