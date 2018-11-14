@@ -13,7 +13,10 @@
 </c:if>
 <jsp:include page = "head.jsp" flush = "false"/>
 <h1>타임라인</h1>
-
+<form action="twitter" method="post">
+	<input type="text" name="comment">
+	<input type="submit" value="등록">
+</form>
 <c:if test="${empty timeline}">
 	게시글이 없습니다.
 </c:if>
