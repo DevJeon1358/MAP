@@ -12,10 +12,10 @@ import javax.sql.DataSource;
 import db.bean.FileBean;
 
 public class FileMgr {
-	
+
+    ///Square : Function For get Database Connection
 	private Connection getConnection() {
 		Connection con = null;
-		
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -27,7 +27,9 @@ public class FileMgr {
 			return null;
 		}
 	}
-	
+
+	///Square : getAllProjectFiles(int projectId) returns ArrayList<FileBean>
+    ///Function for get All of files of project
 	public ArrayList<FileBean> getAllProjectFiles(int projectId) {
 		try {
 			PreparedStatement pstmt = null;
@@ -61,7 +63,9 @@ public class FileMgr {
 			return null;
 		}
 	}
-	
+
+	///Square : getFileInformation(int fileId) returns FileBean
+    ///Function for get File's Information
 	public FileBean getFileInformation(int fileId) {
 		try {
 			PreparedStatement pstmt = null;
@@ -95,9 +99,12 @@ public class FileMgr {
 			return null;
 		}
 	}
-	
+
+	///Square : uploadFile(FileBean fb) returns(0,-1)
+    ///Function for File Upload
 	public int uploadFile(FileBean fb) {
 		try {
+			//INIT CONNECTION
 			Connection con = getConnection();
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
@@ -110,7 +117,8 @@ public class FileMgr {
 			pstmt.setString(3, fb.getOriginalFileName());
 			pstmt.setString(4, fb.getMemo());
 			pstmt.setString(5, fb.getSavedFileName());
-			
+
+			//EXEC Update
 			pstmt.executeUpdate();
 			
 			return 0;
@@ -119,7 +127,9 @@ public class FileMgr {
 			return -1;
 		}
 	}
-	
+
+	///Square: deleteFile(int fileid) returns result(0,1)
+    ///Function for File Delete
 	public int deleteFile(int fileId) {
 		try {
 			Connection con = getConnection();
@@ -137,7 +147,9 @@ public class FileMgr {
 			return -1;
 		}
 	}
-	
+
+	///Square : seatchFile(String str) returns ArrayList
+    ///Function for File Search
 	public ArrayList<FileBean> searchFile(String str) {
 		try {
 			Connection con = getConnection();
@@ -154,7 +166,7 @@ public class FileMgr {
 			ResultSet rs = pstmt.executeQuery();
 			
 			ArrayList<FileBean> res = new ArrayList<FileBean>();
-			
+
 			while(rs.next()) {
 				FileBean fb = new FileBean();
 				fb.setId(rs.getInt("id"));

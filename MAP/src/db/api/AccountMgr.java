@@ -124,7 +124,7 @@ public class AccountMgr {
 		}
 	}
 	
-	public ArrayList<MemberBean> searchMember(String str){
+	public ArrayList<MemberBean> searchMember(String query){
 		PreparedStatement pstmt = null;
 		try {
 			Connection con = getConnection();
@@ -208,7 +208,6 @@ public class AccountMgr {
 			pstmt.setString(4, mb.getId());
 			
 			pstmt.executeUpdate();
-			
 			return 0;
 		}
 		catch(Exception e) {
@@ -240,6 +239,7 @@ public class AccountMgr {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, memberId);
 			ResultSet rs = pstmt.executeQuery();
+
 			if(rs.next()) {
 				return rs.getInt(0);
 			}
