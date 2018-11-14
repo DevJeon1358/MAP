@@ -42,7 +42,7 @@ public class SelectServlet extends HttpServlet {
 				break;
 			}
 		}
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		request.getRequestDispatcher("main").forward(request, response);
 	}
 
 	/**

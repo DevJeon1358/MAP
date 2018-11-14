@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import db.api.ProjectMgr;
+import db.api.TimeLineMgr;
+import db.bean.MemberBean;
 import db.bean.ProjectBean;
+import db.bean.TimeLineBean;
 
 /**
  * Servlet implementation class Main
@@ -32,12 +35,20 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String projectid = request.getParameter("projectid");
-		
-		ProjectMgr pm = new ProjectMgr();
-		ArrayList<ProjectBean> projectlist = pm.getUserProjects(projectid);
 		HttpSession session = request.getSession();
-		session.setAttribute("projectlist", projectlist);
+		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		int projectid = project.getId();
+		
+		// Project 멤버
+		ProjectMgr projectmgr = new ProjectMgr();
+		ArrayList<MemberBean> member = projectmgr.getProjectMembers(projectid);
+		session.setAttribute("projectmember", member);
+		
+		// Project 타임라인
+		TimeLineMgr timeline = new TimeLineMgr();
+		ArrayList<TimeLineBean> TL = timeline.getComment(projectid);
+		session.setAttribute("timeline", timeline);
+		
 		
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
