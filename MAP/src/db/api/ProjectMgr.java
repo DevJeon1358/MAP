@@ -3,6 +3,7 @@ package db.api;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -168,21 +169,17 @@ public class ProjectMgr {
 			if(con == null) {
 				throw new Exception("DB INIT FAILED");
 			}
-			
 			PreparedStatement pstmt = null;
 			
-			String query = "insert into project(name,subject,due) values(?,?,?);";
-			pstmt = con.prepareStatement(query);
+			String query = "insert into project(name,subject,due,creator) values(?,?,?,?);";
+			pstmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, pb.getName());
 			pstmt.setString(2, pb.getSubject());
 			pstmt.setTimestamp(3, new java.sql.Timestamp(pb.getDue().getTime()));
+			pstmt.setString(4, pb.getCreator());
+			
 			pstmt.executeUpdate();
-			
-			query = "select * from project where id=?;";
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pb.getId());
-			ResultSet rs = pstmt.executeQuery();
-			
+			ResultSet rs = pstmt.getGeneratedKeys();
 			if(rs.next()) {
 				return rs.getInt("id");
 			}
@@ -191,6 +188,7 @@ public class ProjectMgr {
 			}
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			return -1;
 		}
 	}
@@ -251,16 +249,17 @@ public class ProjectMgr {
 				
 				ProjectBean ps = new ProjectBean();
 				ps.setId(rs1.getInt("id"));
-				ps.setName(rs.getString("name"));
-				ps.setSubject(rs.getString("subject"));
-				ps.setDue(rs.getDate("due"));
-				ps.setCreator(rs.getString("creator"));
+				ps.setName(rs1.getString("name"));
+				ps.setSubject(rs1.getString("subject"));
+				ps.setDue(rs1.getDate("due"));
+				ps.setCreator(rs1.getString("creator"));
 				
 				projects.add(ps);
 			}
 			return projects;
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
