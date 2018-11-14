@@ -1,11 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import db.api.TimeLineMgr;
+import db.bean.TimeLineBean;
 
 /**
  * Servlet implementation class Twitter
@@ -26,7 +32,19 @@ public class TwitterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("twitter.jsp").forward(request, response);
+		String projectid = request.getParameter("projectid");
+		
+		TimeLineMgr tm = new TimeLineMgr();
+				
+		if(tm != null) {
+			HttpSession session = request.getSession();	
+
+			ArrayList<TimeLineBean> timeline = tm.getComment(Integer.parseInt(projectid));
+			session.setAttribute("timeline", timeline);
+		}
+			
+			request.getRequestDispatcher("twitter.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -34,7 +52,7 @@ public class TwitterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 	}
 
 }
