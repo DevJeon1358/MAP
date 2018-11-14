@@ -39,8 +39,13 @@
 	
 	        </script>        
 	     <li>멤버 초대</li>
+	     
 	     <input type="text" id="members" name="members" value="" onclick="popup();">
-	     <input type="submit" value="등록">
+	     
+		     <form action="home" method="get">
+				<input type="submit" value="등록">
+			</form>
+	     
 	    
 	</ul>
 </body>
