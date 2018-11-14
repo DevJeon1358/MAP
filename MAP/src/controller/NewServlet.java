@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.api.ProjectMgr;
+import db.bean.MemberBean;
 import db.bean.ProjectBean;
 
 /**
@@ -58,10 +60,18 @@ public class NewServlet extends HttpServlet {
 		project.setSubject(subject);
 		project.setDue(date);
 		
+		HttpSession session = request.getSession();
+		MemberBean user = (MemberBean)session.getAttribute("user");
+		project.setCreator(user.getId());
+		
 		ProjectMgr pm = new ProjectMgr();
-		pm.addProject(project);
+		int projectid = pm.addProject(project);
 		
 		// 프로젝트 멤버 추가하기
+		String memberStr = request.getParameter("members"); //  id;id;id;
+		String[] members = memberStr.split(";");
+		for(int i = 0; i < members.length; i++)
+			pm.addProjectMember(projectid, members[i]);
 		
 		// home으로 redirect
 		request.getRequestDispatcher("home.jsp").forward(request, response);
