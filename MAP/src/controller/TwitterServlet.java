@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import db.api.TimeLineMgr;
+import db.bean.MemberBean;
 import db.bean.TimeLineBean;
 
 /**
@@ -19,32 +20,30 @@ import db.bean.TimeLineBean;
 @WebServlet("/twitter")
 public class TwitterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TwitterServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public TwitterServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String projectid = request.getParameter("projectid");
-		
+
 		TimeLineMgr tm = new TimeLineMgr();
-				
+
 		if(tm != null) {
 			HttpSession session = request.getSession();	
 
-			ArrayList<TimeLineBean> timeline = tm.getComment(Integer.parseInt(projectid));
-			session.setAttribute("timeline", timeline);
+			ArrayList<TimeLineBean> tg = tm.getComment(Integer.parseInt(projectid));
+			session.setAttribute("timeline", tg);
 		}
-			
-			request.getRequestDispatcher("twitter.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("twitter.jsp").forward(request, response);
 	}
 
 	/**
@@ -52,7 +51,16 @@ public class TwitterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
+		String projectid = request.getParameter("projectid");
+
+		HttpSession session = request.getSession();
+		TimeLineMgr tm = new TimeLineMgr();
+
+		if(tm != null) {
+			ArrayList<TimeLineBean> tg = tm.getComment(Integer.parseInt(projectid));
+			session.setAttribute("timeline", tg);
+		}
+		
 	}
 
 }

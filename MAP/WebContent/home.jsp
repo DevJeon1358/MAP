@@ -18,11 +18,9 @@
 	참여중인 프로젝트가 없습니다.
 </c:if>
 <c:if test="${not empty projectlist}">
-
 <c:forEach var = "p" items = "${projectlist}">
 	<h3><a href="select?projectid=${p.id}">${p.name}</a></h3>
 </c:forEach>
-
 </c:if>
 <form action="new" method="get">
 	<input type="submit" value="프로젝트 등록">
