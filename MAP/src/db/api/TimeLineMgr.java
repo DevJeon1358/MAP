@@ -29,12 +29,35 @@ public class TimeLineMgr {
 			return null;
 		}
 	}
-	
+
+	public Date getDueTime(int projectId) {
+		try {
+			Connection con = getConnection();
+			if(con==null) {
+				throw new Exception("DB INIT FAILED");
+			}
+
+			PreparedStatement pstmt = null;
+			String query = "select due from project where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,projectId);
+
+			ResultSet rs = pstmt.executeQuery();
+			if(rs==null) {
+				throw new Exception("Result Is Null");
+			}
+			return rs.getDate("due");
+		}
+		catch(Exception e){
+			return null;
+		}
+	}
+
 	public ArrayList<TimeLineBean> getComment(int projectId) {
 		try {
 			Connection con = getConnection();
 			if(con==null) {
-				throw new Exception("DB 연결 실패");
+				throw new Exception("DB INIT FAILED");
 			}
 			
 			PreparedStatement pstmt = null;
@@ -65,7 +88,7 @@ public class TimeLineMgr {
 		try {
 			Connection con = getConnection();
 			if(con==null) {
-				throw new Exception("DB 연결 실패");
+				throw new Exception("DB INIT FAILED");
 			}
 			
 			PreparedStatement pstmt = null;
@@ -82,4 +105,6 @@ public class TimeLineMgr {
 			return -1;
 		}
 	}
+
+
 }
