@@ -38,7 +38,7 @@ public class SelectServlet extends HttpServlet {
 		
 		for(int i=0; i < projectlist.size(); i++) {
 			if(projectlist.get(i).getId() == pid) {
-				session.setAttribute("project", pid);
+				session.setAttribute("project", projectlist.get(i));
 				break;
 			}
 		}
