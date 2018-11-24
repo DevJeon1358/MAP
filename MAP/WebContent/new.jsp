@@ -29,7 +29,7 @@
 	    	    });
 	    	    
 	    	    function popup(){
-	    	    	window.open('searchmember');
+	    	    	window.open('searchmember','searchmember','width=400, height=500');
 	    	    }
 	
 	        </script> 
