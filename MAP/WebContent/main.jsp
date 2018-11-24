@@ -84,6 +84,12 @@
 	</li>
 	<li>
 		<a href="twitter">타임라인</a>
+		<ul>
+		<c:forEach var = "tl" items = "${timeline}">
+				<li>${tl.memberId} ${tl.comment} ${tl.timestamp}</li>	
+			</c:forEach>
+		</ul>
+			
 	</li>
 </ul>
 </body>

@@ -54,7 +54,7 @@ public class MainServlet extends HttpServlet {
 		// Project 타임라인
 		TimeLineMgr timeline = new TimeLineMgr();
 		ArrayList<TimeLineBean> TL = timeline.getComment(projectid);
-		session.setAttribute("timeline", timeline);
+		session.setAttribute("timeline", TL);
 		
 		
 		request.getRequestDispatcher("main.jsp").forward(request, response);
