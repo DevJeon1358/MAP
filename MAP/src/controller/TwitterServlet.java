@@ -34,14 +34,14 @@ public class TwitterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String projectid = request.getParameter("projectid");
+		HttpSession session = request.getSession();
+		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		int projectid = project.getId();
 
 		TimeLineMgr tm = new TimeLineMgr();
 
 		if(tm != null) {
-			HttpSession session = request.getSession();	
-
-			ArrayList<TimeLineBean> tg = tm.getComment(Integer.parseInt(projectid));
+			ArrayList<TimeLineBean> tg = tm.getComment(projectid);
 			session.setAttribute("timeline", tg);
 		}
 		request.getRequestDispatcher("twitter.jsp").forward(request, response);
