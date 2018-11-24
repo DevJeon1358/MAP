@@ -42,12 +42,19 @@ public class NewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		MemberBean user = (MemberBean)session.getAttribute("user");
+		if(user == null) {
+			request.getRequestDispatcher("login").forward(request, response);
+			return;
+		}
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		String name = request.getParameter("projectname");
 		String subject = request.getParameter("subject");
 		String due = request.getParameter("endtime");
-		System.out.println(due);
+		//System.out.println(due);
 		Date date;
 		try {
 			date = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(due);
@@ -61,13 +68,12 @@ public class NewServlet extends HttpServlet {
 		project.setSubject(subject);
 		project.setDue(date);
 		
-		HttpSession session = request.getSession();
-		MemberBean user = (MemberBean)session.getAttribute("user");
+		
 		project.setCreator(user.getId());
 		
 		ProjectMgr pm = new ProjectMgr();
 		int projectid = pm.addProject(project);
-		System.out.println("projectid" + projectid);
+		//System.out.println("projectid" + projectid);
 		
 		pm.addProjectMember(projectid, user.getId());
 		
@@ -83,7 +89,8 @@ public class NewServlet extends HttpServlet {
 		}
 		
 		// home¿∏∑Œ redirect
-		request.getRequestDispatcher("home").forward(request, response);
+		//request.getRequestDispatcher("home").forward(request, response);
+		response.sendRedirect("home");
 	}
 
 }

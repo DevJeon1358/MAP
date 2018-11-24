@@ -37,6 +37,13 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		
+		
+		if(project == null) {
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
+		
 		int projectid = project.getId();
 		
 		// Project ¸â¹ö
