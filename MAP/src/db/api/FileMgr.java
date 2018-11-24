@@ -110,7 +110,7 @@ public class FileMgr {
 				throw new Exception("DB INIT FAILED");
 			}
 
-			String query = "insert into file (uploaderId, projectId, originalFilename, memo, savedFilename) values(?,?,?,?);";
+			String query = "insert into file (uploaderId, projectId, originalFilename, memo, savedFilename) values(?,?,?,?,?);";
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, fb.getUploaderId());
 			pstmt.setInt(2, fb.getProjectId());
