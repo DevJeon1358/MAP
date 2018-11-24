@@ -1,9 +1,6 @@
 # MAP
 2018 DGSW 나르샤 - 2학기
 
-STATE
-![AppVeyor](https://img.shields.io/appveyor/ci/:user/:repo.svg)
-
 ![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)
 
 
