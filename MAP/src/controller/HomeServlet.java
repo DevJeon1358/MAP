@@ -44,7 +44,6 @@ public class HomeServlet extends HttpServlet {
 			
 			session.setAttribute("projectlist", list);
 		}
-		
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 

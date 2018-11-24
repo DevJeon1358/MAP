@@ -15,15 +15,10 @@
 <h2>새 프로젝트 등록</h2>
 <form id="newform" action="new" method="post">
 	<ul>
-		<li>프로젝트명</li>
-		<input type="text" name="projectname">
-		
-		<li>과목</li>
-		<input type="text" name="subject">
-		
-		<li>마감 일시</li>
+		<li>프로젝트명 <input type="text" name="projectname"></li>
+		<li>과목 <input type="text" name="subject"></li>
+		<li>마감 일시
 			<input type="text" name="endtime" id="endtime">
-	        </form>
 				<script src="js/jquery.js"></script>
 				<script src="js/jquery.datetimepicker.full.min.js"></script>
 				<script>	
@@ -37,16 +32,11 @@
 	    	    	window.open('searchmember');
 	    	    }
 	
-	        </script>        
-	     <li>멤버 초대</li>
-	     
-	     <input type="text" id="members" name="members" value="" onclick="popup();">
-	     
-		     <form action="home" method="get">
-				<input type="submit" value="등록">
-			</form>
-	     
-	    
+	        </script> 
+	     </li>       
+	     <li>멤버 초대 <input type="text" id="members" name="members" value="" onclick="popup();"></li>
+		<li><input type="submit" value="등록"></li>
 	</ul>
+</form>   
 </body>
 </html>
