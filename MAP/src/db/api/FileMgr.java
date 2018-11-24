@@ -38,7 +38,7 @@ public class FileMgr {
 				throw new Exception("DB INIT FAILED");
 			}
 			
-			String query = "select * from file where projectId=?;";
+			String query = "select * from file where projectId=? order by timestamp DESC;";
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setInt(1, projectId);
