@@ -81,15 +81,16 @@ public class ProjectMgr {
 				query = "select * from member where id=?;";
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, rs.getString("memberId"));
-				rs = pstmt.executeQuery();
+				ResultSet rs1 = pstmt.executeQuery();
+				if(rs1.next()){
+					MemberBean member = new MemberBean();
+					member.setEmail(rs.getString("email"));
+					member.setId(rs.getString("id"));
+					member.setName(rs.getString("name"));
+					member.setPassword(rs.getString("password"));
 
-				MemberBean member = new MemberBean();
-				member.setEmail(rs.getString("email"));
-				member.setId(rs.getString("id"));
-				member.setName(rs.getString("name"));
-				member.setPassword(rs.getString("password"));
-				
-				members.add(member);
+					members.add(member);
+				}
 			}
 			return members;
 		}
