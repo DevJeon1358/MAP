@@ -2,7 +2,7 @@ package db.bean;
 
 import java.util.Date;
 
-public class ProjectBean {
+public class ProjectBean implements Comparable<ProjectBean> {
 	private int id;
 	private String name;
 	private String subject;
@@ -38,5 +38,24 @@ public class ProjectBean {
 	}
 	public void setDue(Date due) {
 		this.due = due;
+	}
+
+	@override
+	public int compareTo(ProjectBean pb){
+		Date today = new Date();
+		if(this.due < today){
+			return 1;
+		}
+		else{
+			if(this.due < pb.due){
+				return -1;
+			}
+			else if(this.due > pb.due){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
 	}
 }

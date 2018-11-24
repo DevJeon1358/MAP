@@ -69,8 +69,9 @@ CREATE TABLE IF NOT EXISTS `project` (
 -- 테이블 데이터 map.project:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
 INSERT IGNORE INTO `project` (`id`, `name`, `subject`, `due`, `creator`) VALUES
-	(1, 'TEST', '국어', '2018-10-27 14:42:39', '1'),
-	(2, 'TEST2', '국어', '2018-10-27 14:42:57', '1');
+	(1, 'TEST', '수학', '2018-11-24 14:42:39', '1'),
+	(2, 'TEST2', '국어', '2018-10-27 14:42:57', '1'),
+  (3, 'TEST3', '과학', '2018-10-25 14:42:57', '1');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 
 -- 테이블 map.projectmember 구조 내보내기
@@ -87,7 +88,8 @@ CREATE TABLE IF NOT EXISTS `projectmember` (
 /*!40000 ALTER TABLE `projectmember` DISABLE KEYS */;
 INSERT IGNORE INTO `projectmember` (`projectId`, `memberId`) VALUES
 	(1, '1'),
-	(2, '1');
+	(2, '1'),
+  (3, '1');
 /*!40000 ALTER TABLE `projectmember` ENABLE KEYS */;
 
 -- 테이블 map.timeline 구조 내보내기

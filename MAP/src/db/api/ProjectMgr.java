@@ -256,6 +256,8 @@ public class ProjectMgr {
 				
 				projects.add(ps);
 			}
+ 
+			Collections.sort(projects);
 			return projects;
 		}
 		catch(Exception e) {
