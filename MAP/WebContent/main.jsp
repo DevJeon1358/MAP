@@ -29,6 +29,7 @@
             <span class="txt">분</span>
             <span id="time-second" class="num"></span>
             <span class="txt">초</span>
+            <span class="txt">남았습니다.</span>
         </div>
         <script>
         var ddaytimer = setInterval (dayGap, 1000)
@@ -59,13 +60,11 @@
          </script>
 		
 	</li>
+	
+	<br>
 	<li>
-		<h2>파일</h2>
-		<p>자료구조.hwp</p>
-		<p>연결리스트.hwp</p>
-		<p>선형구조.hwp</p>
-		<p>헤더파일.hwp</p>
-		<p>14번 문제 소스.hwp</p>
+		<a href="file">파일</a>
+		
 	</li>
 	<li>
 		<h2>멤버</h2>
@@ -77,7 +76,7 @@
 		<p>신민수</p>
 	</li>
 	<li>
-		<h2>타임라인</h2>
+		<a href="twitter">타임라인</a>
 	</li>
 </ul>
 </body>

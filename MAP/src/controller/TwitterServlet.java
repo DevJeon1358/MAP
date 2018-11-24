@@ -36,6 +36,10 @@ public class TwitterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		if(project==null) {
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
 		int projectid = project.getId();
 
 		TimeLineMgr tm = new TimeLineMgr();
@@ -58,9 +62,17 @@ public class TwitterServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		if(project==null) {
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
 		int projectid = project.getId();
 		
 		MemberBean member = (MemberBean)session.getAttribute("user");
+		if(member==null) {
+			request.getRequestDispatcher("login").forward(request, response);
+			return;
+		}
 		String userid = member.getId();
 		
 		TimeLineMgr tm = new TimeLineMgr();

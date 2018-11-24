@@ -63,7 +63,7 @@ public class TimeLineMgr {
 			}
 			
 			PreparedStatement pstmt = null;
-			String query = "select * from timeline where projectId=?; order by timestamp DESC";
+			String query = "select * from timeline where projectId=? order by timestamp DESC;";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,projectId);
 			
