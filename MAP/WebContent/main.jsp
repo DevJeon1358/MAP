@@ -60,20 +60,27 @@
          </script>
 		
 	</li>
-	
-	<br>
 	<li>
 		<a href="file">파일</a>
 		
 	</li>
 	<li>
-		<h2>멤버</h2>
-		<p>최정민</p>
-		<p>이소은</p>
-		<p>이주영</p>
-		<p>곽현준</p>
-		<p>전광용</p>
-		<p>신민수</p>
+		<p>멤버</p>
+		<c:if test="${empty projectmember}">
+			멤버가 없습니다.
+		</c:if>
+		<c:if test="${not empty projectmember}">
+		<table>
+			<thead><tr><td>이름(이메일)</td></tr></thead>
+			<tbody>
+				<c:forEach var = "pm" items = "${projectmember}">
+					<tr><td>
+					${pm.name} (${pm.email})
+					</td></tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		</c:if>
 	</li>
 	<li>
 		<a href="twitter">타임라인</a>
