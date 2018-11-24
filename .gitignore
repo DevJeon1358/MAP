@@ -6,3 +6,4 @@ MAP/src/db/.idea/db.iml
 MAP/src/controller/NewServlet.java.rej
 *.class
 *.classpath
+MAP/build/classes/db/bean/ProjectBean.class
