@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 
 import db.bean.TimeLineBean;
 
+
+
 public class TimeLineMgr {
 	
 	private Connection getConnection() {

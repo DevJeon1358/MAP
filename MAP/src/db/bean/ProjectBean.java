@@ -43,14 +43,14 @@ public class ProjectBean implements Comparable<ProjectBean> {
 	@override
 	public int compareTo(ProjectBean pb){
 		Date today = new Date();
-		if(this.due < today){
+		if(this.due.getTime() < today.getTime()){
 			return 1;
 		}
 		else{
-			if(this.due < pb.due){
+			if(this.due.getTime() < pb.due.getTime()){
 				return -1;
 			}
-			else if(this.due > pb.due){
+			else if(this.due.getTime() > pb.due.getTime()){
 				return 1;
 			}
 			else{
