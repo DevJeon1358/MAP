@@ -1,11 +1,19 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import db.api.FileMgr;
+import db.bean.FileBean;
+import db.bean.MemberBean;
+import db.bean.ProjectBean;
 
 /**
  * Servlet implementation class FileServlet
@@ -26,6 +34,20 @@ public class FileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		if(project==null) {
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
+		int projectid = project.getId();
+
+		FileMgr fm = new FileMgr();
+
+		if(fm != null) {
+			ArrayList<FileBean> fb = fm.getAllProjectFiles(projectid);
+			session.setAttribute("files", fb);
+		}
 		request.getRequestDispatcher("file.jsp").forward(request, response);
 	}
 
@@ -34,7 +56,32 @@ public class FileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+request.setCharacterEncoding("utf-8");
+		
+		String comment = request.getParameter("comment");
+
+		HttpSession session = request.getSession();
+		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		if(project==null) {
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
+		int projectid = project.getId();
+		
+		MemberBean member = (MemberBean)session.getAttribute("user");
+		if(member==null) {
+			request.getRequestDispatcher("login").forward(request, response);
+			return;
+		}
+		String userid = member.getId();
+		
+		FileMgr fm = new FileMgr();
+
+		if(fm != null) {
+			ArrayList<FileBean> fb = fm.getAllProjectFiles(projectid);
+			session.setAttribute("files", fb);
+		}
+		request.getRequestDispatcher("file.jsp").forward(request, response);
 	}
 
 }
