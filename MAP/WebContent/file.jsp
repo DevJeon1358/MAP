@@ -22,23 +22,24 @@
 	파일이 없습니다.
 </c:if>
 <c:if test="${not empty files}">
-	<form>
+	<form action="deletefile">
 		<table>
 			<thead>
 				<tr>
-					<th>선택</th><th>파일이름</th><th>아이디</th><th>등록일</th>
+					<th>선택</th><th>파일이름</th><th>메모</th><th>아이디</th><th>등록일</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="fl" items="${files}">
 					<tr>
+					<td><input type="radio" value="${fl.id}" name="fileId"></td>
 					<td><a href = "upload/${fl.savedFileName}">${fl.originalFileName}</a></td>
-					<td>${fl.uploaderId}</td><td>${fl.timestamp}</td>
+					<td>${fl.memo}</td><td>${fl.uploaderId}</td><td>${fl.timestamp}</td>
 					</tr>	
-					
 				</c:forEach>
 			</tbody>
 		</table>
+		<input type="submit" value="삭제">
 	</form>
 </c:if>
 </body>
