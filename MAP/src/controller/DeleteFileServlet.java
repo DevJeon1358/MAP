@@ -17,7 +17,7 @@ import db.bean.ProjectBean;
 /**
  * Servlet implementation class DeleteFileServlet
  */
-@WebServlet("/DeleteFileServlet")
+@WebServlet("/deletefile")
 public class DeleteFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
