@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import db.api.TimeLineMgr;
 import db.bean.MemberBean;
+import db.bean.ProjectBean;
 import db.bean.TimeLineBean;
 
 /**
@@ -51,16 +52,25 @@ public class TwitterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String projectid = request.getParameter("projectid");
+		request.setCharacterEncoding("utf-8");
+		
+		String comment = request.getParameter("comment");
 
 		HttpSession session = request.getSession();
+		ProjectBean project = (ProjectBean)session.getAttribute("project");
+		int projectid = project.getId();
+		
+		MemberBean member = (MemberBean)session.getAttribute("user");
+		String userid = member.getId();
+		
 		TimeLineMgr tm = new TimeLineMgr();
+		tm.addComment(projectid, userid, comment);
 
 		if(tm != null) {
-			ArrayList<TimeLineBean> tg = tm.getComment(Integer.parseInt(projectid));
+			ArrayList<TimeLineBean> tg = tm.getComment(projectid);
 			session.setAttribute("timeline", tg);
 		}
-		
+		request.getRequestDispatcher("twitter.jsp").forward(request, response);
 	}
 
 }
