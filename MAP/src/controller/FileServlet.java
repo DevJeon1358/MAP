@@ -3,12 +3,16 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import db.api.FileMgr;
 import db.bean.FileBean;
@@ -56,9 +60,7 @@ public class FileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-request.setCharacterEncoding("utf-8");
-		
-		String comment = request.getParameter("comment");
+		request.setCharacterEncoding("utf-8");
 
 		HttpSession session = request.getSession();
 		ProjectBean project = (ProjectBean)session.getAttribute("project");
@@ -76,11 +78,30 @@ request.setCharacterEncoding("utf-8");
 		String userid = member.getId();
 		
 		FileMgr fm = new FileMgr();
-
+		
+		String savePath = "/upload";
+		int uploadFileSizeLimit = 5*1024*1024;
+		String encType = "UTF-8";
+		
+		ServletContext context = getServletContext();
+		String uploadFilePath = context.getRealPath(savePath);
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
+			String fileName = multi.getFilesystemName("uploadFile");
+			String originalName = multi.getOriginalFileName("uploadFile");
+			String memo = multi.getParameter("memo");
+			if(fileName!=null) {
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		if(fm != null) {
 			ArrayList<FileBean> fb = fm.getAllProjectFiles(projectid);
 			session.setAttribute("files", fb);
 		}
+		
 		request.getRequestDispatcher("file.jsp").forward(request, response);
 	}
 
