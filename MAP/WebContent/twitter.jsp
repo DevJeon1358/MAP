@@ -28,7 +28,7 @@
 			</tr>
 			<c:forEach var = "tl" items = "${timeline}">
 				<tr>
-				<td>${tl.memberId}</td><td>${tl.comment}</td> <td>${tl.timestamp}</td>
+				<td>${tl.memberId}</td><td>${tl.comment}</td><td>${tl.timestamp}</td>
 				</tr>	
 			</c:forEach>
 		</thead>
