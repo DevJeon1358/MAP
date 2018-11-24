@@ -17,6 +17,8 @@
 	</form>
 </c:if>
 <c:if test="${not empty user}">
+	<a href = "home">홈</a>
+	<a href = "main">프로젝트메인</a>
 	<form action="logout" method="post">
 		${user.id} 님
 		<input type="submit" value="로그아웃">
