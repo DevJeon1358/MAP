@@ -78,6 +78,11 @@ public class ProjectMgr {
 				throw new Exception("No Result");
 			}
 			while(rs.next()) {
+				query = "select * from member where id=?;";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, rs.getString("memberId"));
+				rs = pstmt.executeQuery();
+
 				MemberBean member = new MemberBean();
 				member.setEmail(rs.getString("email"));
 				member.setId(rs.getString("id"));
