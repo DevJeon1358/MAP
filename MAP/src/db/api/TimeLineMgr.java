@@ -73,7 +73,7 @@ public class TimeLineMgr {
 				tb.setProjectId(rs.getInt("projectId"));
 				tb.setMemberId(rs.getString("memberId"));
 				tb.setComment(rs.getString("comment"));
-				
+				tb.setTimestamp(rs.getTimestamp("timestamp"));
 				list.add(tb);
 			}
 			
