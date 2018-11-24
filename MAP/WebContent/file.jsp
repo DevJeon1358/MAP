@@ -33,7 +33,7 @@
 				<c:forEach var="fl" items="${files}">
 					<tr>
 					<td><input type="radio" value="${fl.id}" name="fileId"></td>
-					<td><a href = "upload/${fl.savedFileName}">${fl.originalFileName}</a></td>
+					<td><a href = "upload/${fl.savedFileName}" download>${fl.originalFileName}</a></td>
 					<td>${fl.memo}</td><td>${fl.uploaderId}</td><td>${fl.timestamp}</td>
 					</tr>	
 				</c:forEach>
