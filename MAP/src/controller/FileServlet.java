@@ -92,7 +92,13 @@ public class FileServlet extends HttpServlet {
 			String originalName = multi.getOriginalFileName("uploadFile");
 			String memo = multi.getParameter("memo");
 			if(fileName!=null) {
-				
+				FileBean fb = new FileBean();
+				fb.setUploaderId(userid);
+				fb.setProjectId(projectid);
+				fb.setOriginalFileName(originalName);
+				fb.setSavedFileName(fileName);
+				fb.setMemo(memo);
+				fm.uploadFile(fb);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
