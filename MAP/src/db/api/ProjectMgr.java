@@ -84,10 +84,10 @@ public class ProjectMgr {
 				ResultSet rs1 = pstmt.executeQuery();
 				if(rs1.next()){
 					MemberBean member = new MemberBean();
-					member.setEmail(rs.getString("email"));
-					member.setId(rs.getString("id"));
-					member.setName(rs.getString("name"));
-					member.setPassword(rs.getString("password"));
+					member.setEmail(rs1.getString("email"));
+					member.setId(rs1.getString("id"));
+					member.setName(rs1.getString("name"));
+					member.setPassword(rs1.getString("password"));
 
 					members.add(member);
 				}
