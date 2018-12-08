@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import db.api.FileMgr;
 import db.api.ProjectMgr;
 import db.api.TimeLineMgr;
+import db.bean.FileBean;
 import db.bean.MemberBean;
 import db.bean.ProjectBean;
 import db.bean.TimeLineBean;
@@ -56,6 +58,10 @@ public class MainServlet extends HttpServlet {
 		ArrayList<TimeLineBean> TL = timeline.getComment(projectid);
 		session.setAttribute("timeline", TL);
 		
+		//File
+		FileMgr file = new FileMgr();
+		ArrayList<FileBean> files = file.getAllProjectFiles(projectid);
+		session.setAttribute("files", files);
 		
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
