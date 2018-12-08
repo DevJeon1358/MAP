@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
 </head>
-<body>
+<body class="uk-animation-fade uk-margin-left uk-margin-top uk-margin-right uk-card uk-card-default uk-card-body uk-background-muted">
 	<c:if test="${empty user}">
 		<c:redirect url="login.jsp" />
 	</c:if>
@@ -24,8 +24,7 @@
 				class="uk-button uk-button-primary uk-button-default">
 		</div>
 	</form>
-	<table
-		class="uk-table uk-table-divider uk-table-small uk-table-responsive">
+	<table class="uk-table uk-table-divider uk-table-small uk-table-responsive uk-table uk-table-hover">
 		<thead>
 			<tr>
 				<th>아이디</th>
@@ -48,6 +47,5 @@
 	<c:if test="${empty timeline}">
 		<span class="uk-text-bottom uk-text-right">게시글이 없습니다.</span>
 	</c:if>
-
 </body>
 </html>
