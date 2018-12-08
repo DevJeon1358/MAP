@@ -25,7 +25,7 @@
 				<div class="uk-margin">
 		        <label class="uk-form-label" for="form-stacked-text">프로젝트명</label>
 		        <div class="uk-form-controls">
-		            <input class="uk-input" id="form-stacked-text" type="text" name="projectname" placeholder="프로젝트명을 입력해주세요">
+		            <input class="uk-input" id="form-stacked-text" type="text" name="projectname" placeholder="프로젝트명을 입력해주세요" maxlength="45">
 		        </div>
 		   		</div>
 		</li>
@@ -33,7 +33,7 @@
 			<div class="uk-margin">
 		        <label class="uk-form-label" for="form-stacked-text">과목</label>
 		        <div class="uk-form-controls">
-		            <input class="uk-input" id="form-stacked-text" type="text" name="subject" placeholder="과제 담당 교과를 입력해주세요">
+		            <input class="uk-input" id="form-stacked-text" type="text" name="subject" placeholder="과제 담당 교과를 입력해주세요" maxlength="45">
 		        </div>
 		   		</div>
 			</li>
