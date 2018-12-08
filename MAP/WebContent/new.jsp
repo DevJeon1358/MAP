@@ -33,7 +33,7 @@
 			<div class="uk-margin">
 		        <label class="uk-form-label" for="form-stacked-text">과목</label>
 		        <div class="uk-form-controls">
-		            <input class="uk-input" id="form-stacked-text" type="text" name="projectname" placeholder="과제 담당 교과를 입력해주세요">
+		            <input class="uk-input" id="form-stacked-text" type="text" name="subject" placeholder="과제 담당 교과를 입력해주세요">
 		        </div>
 		   		</div>
 			</li>
@@ -41,7 +41,7 @@
 			<div class="uk-margin">
 		        <label class="uk-form-label" for="form-stacked-text">마감일시</label>
 		        <div class="uk-form-controls">
-		            <input class="uk-input" id="endtime" type="text" name="projectname" placeholder="마감일시를 입력해주세요">
+		            <input class="uk-input" id="endtime" type="text" name="endtime" placeholder="마감일시를 입력해주세요">
 						<script src="js/jquery.js"></script>
 				</div>
 			</div>
