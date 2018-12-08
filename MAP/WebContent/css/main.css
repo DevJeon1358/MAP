@@ -1,0 +1,23 @@
+@import url("uikit/uikit.min.css");
+
+.fl-left{
+    float: left;
+}
+
+.mg-auto{
+    margin: 0 auto;
+}
+
+a{
+    cursor: default;
+}
+
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.text-size-2{
+    font-size: 1.25em;
+}
+
