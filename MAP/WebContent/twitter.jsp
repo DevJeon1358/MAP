@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
 </head>
-<body class="uk-animation-fade uk-margin-left uk-margin-top uk-margin-right uk-card uk-card-default uk-card-body uk-background-muted">
+<body class="uk-animation-fade uk-margin-left uk-margin-top uk-margin-right uk-card uk-card-default uk-card-body uk-background-muted uk-width-1-2">
 	<c:if test="${empty user}">
 		<c:redirect url="login.jsp" />
 	</c:if>
