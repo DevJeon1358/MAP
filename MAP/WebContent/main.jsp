@@ -132,16 +132,11 @@
                     <hr />
                     <c:if test="${not empty files}">
                         <table class="uk-table uk-table-hover uk-table uk-table-divider">
-                            <thead>
-                                <tr>
-                                    <td>파일명(등록일)</td>
-                                </tr>
-                            </thead>
                             <tbody>
                                 <c:forEach var="f" items="${files}">
                                     <tr>
                                         <td>
-                                            ${f.originalFileName} (${f.timestamp})
+                                            ${f.originalFileName}<br />(${f.timestamp})
                                         </td>
                                     </tr>
                                 </c:forEach>
