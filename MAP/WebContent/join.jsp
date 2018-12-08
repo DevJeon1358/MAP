@@ -4,18 +4,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
+<script src="js/uikit-icons.min.js"></script>
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="head.jsp" flush="false"/>
-<h1>회원가입</h1>
-<form action="join" method="post">
-	ID <input type="text" name="userid"> <br>
-	PW <input type="password" name="password"> <br>
-	이름 <input type="text" name="name"> <br>
-	E-Mail <input type="text" name="email"> <br>
-	<input type="submit" value="회원가입">
-</form>
+
+
+<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+	<div class="uk-width-1-1">
+		<div class="uk-container">
+			<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+				<div class="uk-width-1-1@m">
+					<div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+						<h3 class="uk-card-title uk-text-center">MAP</h3>
+						<form action="join" method="post">
+							<div class="uk-margin">
+								<div class="uk-inline uk-width-1-1">
+									<span class="uk-form-icon" uk-icon="icon: user"></span>
+									<input class="uk-input uk-form-large" type="text" name="userid" placeholder="ID">
+								</div>
+							</div>
+							<div class="uk-margin">
+								<div class="uk-inline uk-width-1-1">
+									<span class="uk-form-icon" uk-icon="icon: lock"></span>
+									<input class="uk-input uk-form-large" type="password" name="password" placeholder="PW">	
+								</div>
+							</div>
+							<div class="uk-margin">
+								<div class="uk-inline uk-width-1-1">
+									<span class="uk-form-icon" uk-icon="icon: pencil"></span>
+									<input class="uk-input uk-form-large" type="text" name="name" placeholder="NAME">	
+								</div>
+							</div>
+							<div class="uk-margin">
+								<div class="uk-inline uk-width-1-1">
+									<span class="uk-form-icon" uk-icon="icon: mail"></span>
+									<input class="uk-input uk-form-large" type="text" name="email" placeholder="E-MAIL">	
+								</div>
+							</div>
+							<div class="uk-margin">
+								<div class="uk-inline uk-width-1-1">
+									<input class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit" value="회원가입">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
