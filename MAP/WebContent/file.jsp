@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
 	<div class="uk-container uk-container-expand">
@@ -18,9 +19,11 @@
 						<c:redirect url="login.jsp" />
 					</c:if>
 					<jsp:include page="head.jsp" flush="false" />
-					<h1>
-						<span class="uk-text-lead">문서</span>
-					</h1>
+					<h3>
+						<span uk-icon="icon: file-text; ratio: 2"></span>
+						<span class="uk-text-middle">파일</span>
+						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
+					</h3>
 					<form action="file" method="post" enctype="multipart/form-data" class="uk-search uk-search-default">
 						<input class="uk-search-input" type="text" placeholder="메모" name="memo">
 						<div class="uk-margin" uk-margin>
@@ -59,7 +62,7 @@
 							</tbody>
 						</table>
 						<c:if test="${empty files}">
-						<span class="uk-text-bottom uk-text-right">파일이 없습니다.</span>
+							<span class="uk-text-bottom uk-text-right">파일이 없습니다.</span>
 						</c:if>
 					</form>
 				</div>
