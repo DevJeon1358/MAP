@@ -2,29 +2,91 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html class="uk-background-muted">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>MAP</title>
+	<link rel="stylesheet" href="css/home.css" />
+	<script src="js/uikit.min.js"></script>
+	<script src="js/uikit-icons.min.js"></script>
+	<script src="js/home.js"></script>
 </head>
+
 <body>
-<c:if test="${empty user}">
-	<c:redirect url="login.jsp"/>
-</c:if>
-<jsp:include page="head.jsp" flush="flase"/>
+	<c:if test="${empty user}">
+		<c:redirect url="login.jsp" />
+	</c:if>
+	<jsp:include page="head.jsp" flush="flase" />
 
-<h1>프로젝트 리스트</h1>
-<c:if test="${empty projectlist}">
-	참여중인 프로젝트가 없습니다.
-</c:if>
-<c:if test="${not empty projectlist}">
-<c:forEach var = "p" items = "${projectlist}">
-	<h3><a href="select?projectid=${p.id}">${p.name}</a></h3>
-</c:forEach>
-</c:if>
-<form action="new" method="get">
-	<input type="submit" value="프로젝트 등록">
-</form>
+	<div class="uk-container uk-container-expand uk-margin-top uk-animation-fade">
+		<h2 class="uk-margin-bottom">${user.name}님, 환영합니다!</h2>
+		<hr />
+		<div class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin-top">
+			<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark; top: 200">
+				<nav class="uk-background-default uk-navbar-container uk-margin" uk-navbar>
+					<div class="uk-navbar-left">
+						<h3>참여중인 프로젝트</h3>
+					</div>
+					<div class="uk-navbar-right">
+						<div>
+							<a class="uk-navbar-toggle" uk-search-icon href="#"></a>
+							<div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+								<form class="uk-search uk-search-navbar uk-width-1-1">
+									<input class="uk-search-input" type="search" placeholder="Search...." autofocus>
+								</form>
+								<form action="new" method="get">
+									<span class="uk-form-icon" uk-icon="icon: plus"></span>
+									<input type="submit" class="uk-input" value="프로젝트 등록">
+								</form>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<c:if test="${empty projectlist}">
+				참여중인 프로젝트가 없습니다.
+			</c:if>
+			<c:if test="${not empty projectlist}">
+				<div class="uk-grid-medium uk-child-width-expand@s" uk-grid>
+					<c:forEach var="p" items="${projectlist}">
+						<div>
+							<div class="uk-card uk-card-primary">
+								<div class="uk-card-header">
+									<!-- 프로젝트 정보 -->
+									<div class="uk-grid-small uk-flex-middle" uk-grid>
+										<div class="uk-width-auto">
+											<span uk-icon="hashtag"></span>
+										</div>
+										<div class="uk-width-expand">
+											<h3 class="uk-card-title uk-margin-remove-bottom">${p.name}</h3>
+											<!-- 마감 알림 -->
+											<p class="uk-text-meta uk-margin-remove-top text-clr-red">${p.due}</p>
+										</div>
+									</div>
+								</div>
+								<div class="uk-card-footer">
+									<a href="select?projectid=${p.id}" class="uk-button uk-button-text">프로젝트 진입 <span uk-icon="arrow-right"></span></a>
+								</div>
+							</div>
 
+						</div>
+					</c:forEach>
+
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+				</div>
+				<c:forEach var="p" items="${projectlist}">
+					<h3><a href="select?projectid=${p.id}">${p.name}</a></h3>
+				</c:forEach>
+			</c:if>
+			<!-- Projects 마감 임박 프로젝트는 검정색으로 표기 -->
+		</div>
+	</div>
 </body>
+
 </html>
