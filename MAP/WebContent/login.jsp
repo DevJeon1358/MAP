@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel = "stylesheet" type = "text/css" href = "css/uikit/uikit.min.css">
-<script src = "js/uikit.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
+<script src="js/uikit-icons.min.js"></script>
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -25,7 +28,7 @@
 						<form action="login" method="post">
 							<div class="uk-margin">
 								<div class="uk-inline uk-width-1-1">
-									<span class="uk-form-icon" uk-icon="icon: mail"></span>
+									<span class="uk-form-icon" uk-icon="icon: user"></span>
 									<input class="uk-input uk-form-large" type="text" name="userid" placeholder="ID">
 								</div>
 							</div>
@@ -40,7 +43,7 @@
 							</div>
 						</form>
 						<form action="join" method="post">
-							<input class="uk-button uk-button-default uk-width-1-1" type="submit" value="회원가입">
+							<input class="uk-button uk-button-default uk-button-large uk-width-1-1" type="submit" value="회원가입">
 						</form>
 					</div>
 				</div>
