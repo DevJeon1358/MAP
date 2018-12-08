@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
 	<div class="uk-container uk-container-expand">
@@ -18,9 +19,11 @@
 						<c:redirect url="login.jsp" />
 					</c:if>
 					<jsp:include page="head.jsp" flush="false" />
-					<h1>
-						<span class="uk-text-lead">타임라인</span>
-					</h1>
+					<h3>
+						<span uk-icon="icon: twitter; ratio: 2"></span>
+						<span class="uk-text-middle">타임라인</span>
+						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
+					</h3>
 					<form action="twitter" method="post">
 						<div>
 							<input class="uk-input uk-form-width-medium" type="text" name="comment">
