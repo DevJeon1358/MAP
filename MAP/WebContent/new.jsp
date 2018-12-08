@@ -18,7 +18,7 @@
 </c:if>
 <jsp:include page="head.jsp" flush="flase"/>
 <div class="uk-align-center uk-width-1-2">
-<h2 class="new_title">새 프로젝트 등록</h2>
+<h2 class="uk-text-primary">새 프로젝트 등록</h2>
 <form id="newform" action="new" method="post">
 	<ul class="uk-list uk-list-striped">
 		<li class="uk-margin-small-bottom">
@@ -65,7 +65,9 @@
 		        </div>
 		   		</div>
 		</li>
-		<li><input type="submit" value="등록"></li>
+		<li>
+			<input type="submit" value="등록" class="uk-button uk-button-primary"></li>
+			
 	</ul>
 </form>   
 </div>
