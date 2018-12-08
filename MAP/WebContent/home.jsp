@@ -29,18 +29,15 @@
 						<h3>참여중인 프로젝트</h3>
 					</div>
 					<div class="uk-navbar-right">
-						<div>
-							<a class="uk-navbar-toggle" uk-search-icon href="#"></a>
-							<div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-								<form class="uk-search uk-search-navbar uk-width-1-1">
-									<input class="uk-search-input" type="search" placeholder="Search...." autofocus>
-								</form>
-								<form action="new" method="get">
-									<span class="uk-form-icon" uk-icon="icon: plus"></span>
-									<input type="submit" class="uk-input" value="프로젝트 등록">
-								</form>
-							</div>
+						<div class="uk-margin-right">
+							<form class="uk-search uk-search-default">
+								<a href="" class="uk-search-icon-flip" uk-search-icon></a>
+								<input class="uk-search-input" type="search" placeholder="Search...">
+							</form>
 						</div>
+						<form action="new" method="get" class="addbtn">
+							<input type="submit" class="uk-input addbtn uk-button-primary" value="프로젝트 등록">
+						</form>
 					</div>
 				</nav>
 			</div>
@@ -48,10 +45,10 @@
 				참여중인 프로젝트가 없습니다.
 			</c:if>
 			<c:if test="${not empty projectlist}">
-				<div class="uk-grid-medium uk-child-width-expand@s" uk-grid>
+				<div class="uk-grid-medium uk-flex-wrap uk-flex-wrap-around uk-child-width-1-3" uk-grid>
 					<c:forEach var="p" items="${projectlist}">
-						<div>
-							<div class="uk-card uk-card-primary">
+						<div class="uk-width-1-3">
+							<div class="uk-card uk-card-default">
 								<div class="uk-card-header">
 									<!-- 프로젝트 정보 -->
 									<div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -61,7 +58,7 @@
 										<div class="uk-width-expand">
 											<h3 class="uk-card-title uk-margin-remove-bottom">${p.name}</h3>
 											<!-- 마감 알림 -->
-											<p class="uk-text-meta uk-margin-remove-top text-clr-red">${p.due}</p>
+											<p class="uk-text-meta uk-margin-remove-top text-clr-red">마감 : ${p.due}</p>
 										</div>
 									</div>
 								</div>
@@ -69,22 +66,10 @@
 									<a href="select?projectid=${p.id}" class="uk-button uk-button-text">프로젝트 진입 <span uk-icon="arrow-right"></span></a>
 								</div>
 							</div>
-
 						</div>
 					</c:forEach>
-
-					<div>
-						<div class="uk-card uk-card-default uk-card-body">Item</div>
-					</div>
-					<div>
-						<div class="uk-card uk-card-default uk-card-body">Item</div>
-					</div>
 				</div>
-				<c:forEach var="p" items="${projectlist}">
-					<h3><a href="select?projectid=${p.id}">${p.name}</a></h3>
-				</c:forEach>
 			</c:if>
-			<!-- Projects 마감 임박 프로젝트는 검정색으로 표기 -->
 		</div>
 	</div>
 </body>

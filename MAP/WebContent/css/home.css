@@ -21,3 +21,8 @@
 .text-clr-orange{
     color: #ff5722;
 }
+
+.addbtn{
+    float: left;
+    margin: 0;
+}
