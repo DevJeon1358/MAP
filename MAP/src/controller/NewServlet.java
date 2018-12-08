@@ -57,6 +57,7 @@ public class NewServlet extends HttpServlet {
 		//System.out.println(due);
 		Date date;
 		try {
+			System.out.println(due);
 			date = new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(due);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -77,7 +78,7 @@ public class NewServlet extends HttpServlet {
 		
 		pm.addProjectMember(projectid, user.getId());
 		
-		// ÇÁ·ÎÁ§Æ® ¸â¹ö Ãß°¡ÇÏ±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½
 		String memberStr = request.getParameter("members"); //  id;id;id;
 		if(memberStr != null) {
 			String[] members = memberStr.split(";");
@@ -88,7 +89,7 @@ public class NewServlet extends HttpServlet {
 			}
 		}
 		
-		// homeÀ¸·Î redirect
+		// homeï¿½ï¿½ï¿½ï¿½ redirect
 		//request.getRequestDispatcher("home").forward(request, response);
 		response.sendRedirect("home");
 	}
