@@ -9,6 +9,7 @@
 		<script src="js/uikit.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/new.css"/>
 		<script src="js/uikit-icons.min.js"></script>
+		<script src="js/jquery.js"></script>
 
 </head>
 <body>
@@ -29,26 +30,40 @@
 		   		</div>
 		</li>
 		<li class="uk-margin-small-bottom">
-			<input type="text" name="subject" style="text-align:center; width:300px; height:28px; text-align:center"></li>
+			<div class="uk-margin">
+		        <label class="uk-form-label" for="form-stacked-text">과목</label>
+		        <div class="uk-form-controls">
+		            <input class="uk-input" id="form-stacked-text" type="text" name="projectname" placeholder="과제 담당 교과를 입력해주세요">
+		        </div>
+		   		</div>
+			</li>
 		<li class="uk-margin-small-bottom">
-			<input type="text" name="endtime" id="endtime"style="text-align:center; width:300px; height:28px;">
-				<script src="js/jquery.js"></script>
-				<script src="js/jquery.datetimepicker.full.min.js"></script>
-				<script>	
-	    	    jQuery(document).ready(function () {
-	    	    	'use strict';
-				jQuery('#endtime').datetimepicker();
-				
-	    	    });
+			<div class="uk-margin">
+		        <label class="uk-form-label" for="form-stacked-text">마감일시</label>
+		        <div class="uk-form-controls">
+		            <input class="uk-input" id="endtime" type="text" name="projectname" placeholder="마감일시를 입력해주세요">
+						<script src="js/jquery.js"></script>
+				</div>
+			</div>
+						<script src="js/jquery.datetimepicker.full.min.js"></script>
+						<script>	
+			    	    jQuery(document).ready(function () {
+			    	    	'use strict';
+						jQuery('#endtime').datetimepicker();
+	    	  			});
 	    	    
 	    	    function popup(){
 	    	    	window.open('searchmember','searchmember','width=400, height=500');
 	    	    }
-	
 	        </script> 
 	     </li>       
 	     <li class="uk-margin-small-bottom">
-		      <input type="text" id="members" name="members" value="" onclick="popup();" style="text-align:center; width:300px; height:28px; "text-align:center">
+	     <div class="uk-margin">
+		        <label class="uk-form-label" for="form-stacked-text">멤버 초대</label>
+		        <div class="uk-form-controls">
+		            <input class="uk-input" id="members" type="text" name="members" onclick="popup();" placeholder="추가할 멤버를 입력해주세요">
+		        </div>
+		   		</div>
 		</li>
 		<li><input type="submit" value="등록"></li>
 	</ul>
