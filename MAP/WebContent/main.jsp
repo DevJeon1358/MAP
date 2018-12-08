@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
+<script src="js/uikit-icons.min.js"></script>
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.js"></script>
 </head>
 <body>
 <c:if test="${empty user}">
@@ -15,26 +20,39 @@
 
 <h1>${project.name}</h1>
 
-<ul>
+<ul class="uk-list">
 	<li>
-		<h2>마감일 카운터</h2>
-		<div class="counter">
-            <!-- <span id="target-day"></span><span class="text_target">까지</span><br>-->
-            <span id="dday-timer" class="num"></span>
-            <span id="time-day" class="num"></span>
-            <span class="txt">일</span>
-            <span id="time-hour" class="num"></span>
-            <span class="txt">시간</span>
-            <span id="time-minute" class="num"></span>
-            <span class="txt">분</span>
-            <span id="time-second" class="num"></span>
-            <span class="txt">초</span>
-            <span class="txt">남았습니다.</span>
-        </div>
+		<div class="counter uk-card uk-card-default uk-card-body uk-width-1-2@l">
+             <h3 class="uk-card-title">프로젝트 마감일</h3>
+            <!-- <span id="target-day"></span><span class="text_target">까지</span><br>-->      
+		<div id="time" class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-12-15T02:50:32+00:00">
+    		<div>
+        		<div id="time-day" class="uk-countdown-number uk-countdown-days"></div>
+        		<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>
+    		</div>
+    		<div class="uk-countdown-separator">:</div>
+    		<div>
+     		   <div id="time-hour" class="uk-countdown-number uk-countdown-hours"></div>
+               <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>
+    		</div>
+    		<div class="uk-countdown-separator">:</div>
+    		<div>
+     		   <div id="time-minute" class="uk-countdown-number uk-countdown-minutes"></div>
+        	   <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>
+    		</div>
+    		<div class="uk-countdown-separator">:</div>
+    		<div>
+        		<div id="time-second" class="uk-countdown-number uk-countdown-seconds"></div>
+        		<div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>
+    		</div>
+		</div> 
+       </div>
         <script>
         var ddaytimer = setInterval (dayGap, 1000)
         function dayGap () {
             var dday = new Date(${project.due.time});//디데이
+            var ddayAttr = "date: " + dday;
+            document.getElementById("time").setAttribute("uk-countdown", ddayAttr);
             var ddayChange = dday.getTime();
             var nowday = new Date();//현재
             nowday = nowday.getTime();//밀리세컨드 단위변환
@@ -61,16 +79,17 @@
 		
 	</li>
 	<li>
+		<a href="file" class="uk-icon" uk-icon="icon: file-text; ratio: 3"></a>
 		<a href="file">파일</a>
-		
 	</li>
 	<li>
-		<p>멤버</p>
+		<a href="#" class="uk-icon uk-link-reset" uk-icon="icon: users; ratio: 3"></a>
+		<a href="#">멤버</a>
 		<c:if test="${empty projectmember}">
 			멤버가 없습니다.
 		</c:if>
 		<c:if test="${not empty projectmember}">
-		<table>
+		<table class="uk-table uk-table-hover uk-table uk-table-divider">
 			<thead><tr><td>이름(이메일)</td></tr></thead>
 			<tbody>
 				<c:forEach var = "pm" items = "${projectmember}">
@@ -83,8 +102,9 @@
 		</c:if>
 	</li>
 	<li>
+		<a href="twitter" class="uk-icon-button" uk-icon="icon: twitter; ratio: 3"></a>
 		<a href="twitter">타임라인</a>
-		<ul>
+		<ul class="uk-list uk-list-divider">
 		<c:forEach var = "tl" items = "${timeline}">
 				<li>${tl.memberId} ${tl.comment} ${tl.timestamp}</li>	
 			</c:forEach>

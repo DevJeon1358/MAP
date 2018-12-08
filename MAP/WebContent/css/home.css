@@ -1,0 +1,28 @@
+/* UI KIT */
+@import url("uikit/uikit.min.css");
+
+.member-badge {
+    height: 25px;
+    font-size: 10pt;
+}
+
+.fl-l{
+    float:left;
+}
+
+.text-clr-red{
+    color: #f44336;
+}
+
+.text-clr-indigo{
+    color: #3f51b5;
+}
+
+.text-clr-orange{
+    color: #ff5722;
+}
+
+.addbtn{
+    float: left;
+    margin: 0;
+}
