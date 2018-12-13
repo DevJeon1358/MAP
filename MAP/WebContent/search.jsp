@@ -7,14 +7,14 @@
 		<meta charset="UTF-8">
 			<title>Insert title here</title>
 				<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
-				<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
+				<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css"/>
 				<script src="js/uikit.min.js"></script>
 				<link rel="stylesheet" type="text/css" href="css/new.css"/>
 				<script src="js/uikit-icons.min.js"></script>
 				<script src="js/jquery.js"></script>
 				<script>	
 				    jQuery(document).ready(function () {
-				    	$('.radio').click(function(){
+				    	$('.uk-radio').click(function(){
 				    	var st = $(":input:radio[name=memberid]:checked").val();
 				    	opener.newform.members.value+=st+";";
 				    	self.close();
@@ -40,7 +40,7 @@
 			    	<c:if test="${not empty searchresult}">
 						<c:forEach var="search" items="${searchresult}">
 							<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-								<label><input class="uk-radio" type="radio" name="memberid value="${search.id}" class="radio">${search.id}</label><br>
+								<label><input class="uk-radio" type="radio" name="memberid" value="${search.id}" class="radio">${search.id}</label><br>
 							</div>
 						</c:forEach>
 					</c:if> 	
