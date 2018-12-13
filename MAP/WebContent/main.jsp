@@ -19,7 +19,6 @@
 		<c:redirect url="login.jsp" />
 	</c:if>
 	<jsp:include page="head.jsp" flush="flase" />
-	
     <div class="uk-container uk-container-expand uk-margin-top uk-animation-fade">
         <!-- Directory -->
         <ul class="uk-breadcrumb">
