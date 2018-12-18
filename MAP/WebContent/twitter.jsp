@@ -21,7 +21,7 @@
 					<jsp:include page="head.jsp" flush="false" />
 					<h3>
 						<span uk-icon="icon: twitter; ratio: 2"></span>
-						<span class="uk-text-middle">타임라인</span>
+						<span class="uk-text-middle fonted">타임라인</span>
 						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
 					</h3>
 					<form action="twitter" method="post">

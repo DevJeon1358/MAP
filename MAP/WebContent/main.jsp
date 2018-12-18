@@ -30,14 +30,14 @@
             <!-- 프로젝트 이름 -->
             <div class="uk-width-1-3">
                 <div class="uk-card uk-card-primary uk-card-body uk-card-hover">
-                    <h2 class="uk-text-large">${project.name}</h2>
+                    <h2 class="uk-text-large fonted">${project.name}</h2>
                     <p id="end-date" class="text-size-2">마감 : ${project.due.time}</p>
                 </div>
             </div>
             <!--마감일-->
             <div class="fl-left uk-margin-left uk-height-2-3 uk-margin-remove-left">
                 <div class="uk-card uk-card-default uk-card-body uk-height-2-3 uk-card-hover">
-                    <h3 class="uk-card-title uk-card-large">마감일 까지 남은 시간</h3>
+                    <h3 class="uk-card-title uk-card-large fonted">마감일 까지 남은 시간</h3>
                     <div id="time" class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-12-18T02:50:32+00:00">
                         <div>
                             <div id="time-day" class="uk-countdown-number uk-countdown-days"></div>
@@ -88,7 +88,7 @@
         <div class="uk-grid-medium uk-flex-wrap uk-flex-wrap-around uk-child-width-expand@s uk-margin-top" uk-grid>
             <div class="uk-width-1-3">
                 <div class="uk-card uk-card-default uk-card-body uk-card-hover">
-                    <h3 class="uk-card-title uk-card-large"> <span uk-icon="icon: users; ratio: 2"></span> <span class="uk-text-middle">멤버</span></h3>
+                    <h3 class="uk-card-title uk-card-large"> <span uk-icon="icon: users; ratio: 2"></span> <span class="uk-text-middle fonted">멤버</span></h3>
                     <hr />
                     <c:if test="${empty projectmember}">
                         	멤버가 없습니다.
@@ -110,7 +110,7 @@
             </div>
             <a href="twitter" class="uk-width-1-3 no-line">
                 <div class="uk-card uk-card-default uk-card-body uk-card-hover">
-                    <h3 class="uk-card-title uk-card-large"> <span uk-icon="icon: twitter; ratio: 2"></span> <span class="uk-text-middle">타임라인</span> <span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span></h3>
+                    <h3 class="uk-card-title uk-card-large"> <span uk-icon="icon: twitter; ratio: 2"></span> <span class="uk-text-middle fonted">타임라인</span> <span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span></h3>
                     <hr />
                     <ul class="uk-list uk-list-divider">
                         <c:forEach var="tl" items="${timeline}">
@@ -121,7 +121,7 @@
             </a>
             <a href="file" class="uk-width-1-3 no-line">
                 <div class="uk-card uk-card-default uk-card-body uk-card-hover">
-                    <h3 class="uk-card-title uk-card-small uk-text-middle"> <span uk-icon="icon: file-text; ratio: 2"></span> <span class="uk-text-middle">파일</span> <span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span></h3>
+                    <h3 class="uk-card-title uk-card-small uk-text-middle"> <span uk-icon="icon: file-text; ratio: 2"></span> <span class="uk-text-middle fonted">파일</span> <span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span></h3>
                     <hr />
                     <c:if test="${not empty files}">
                         <table class="uk-table uk-table-hover uk-table uk-table-divider">

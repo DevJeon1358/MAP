@@ -20,13 +20,13 @@
 	<jsp:include page="head.jsp" flush="flase" />
 
 	<div class="uk-container uk-container-expand uk-margin-top uk-animation-fade">
-		<h2 class="uk-margin-bottom">${user.name}님, 환영합니다!</h2>
+		<h2 class="uk-margin-bottom fonted">${user.name}님, 환영합니다!</h2>
 		<hr />
 		<div class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin-top">
 			<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark; top: 200">
 				<nav class="uk-background-default uk-navbar-container uk-margin" uk-navbar>
 					<div class="uk-navbar-left">
-						<h3>참여중인 프로젝트</h3>
+						<h3 class="fonted">참여중인 프로젝트</h3>
 					</div>
 					<div class="uk-navbar-right">
 						<div class="uk-margin-right">
@@ -56,7 +56,7 @@
 											<span uk-icon="hashtag"></span>
 										</div>
 										<div class="uk-width-expand">
-											<h3 class="uk-card-title uk-margin-remove-bottom">${p.name}</h3>
+											<h3 class="uk-card-title uk-margin-remove-bottom fonted">${p.name}</h3>
 											<!-- 마감 알림 -->
 											<p class="uk-text-meta uk-margin-remove-top text-clr-red">마감 : ${p.due}</p>
 										</div>

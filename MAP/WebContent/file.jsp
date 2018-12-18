@@ -21,7 +21,7 @@
 					<jsp:include page="head.jsp" flush="false" />
 					<h3>
 						<span uk-icon="icon: file-text; ratio: 2"></span>
-						<span class="uk-text-middle">파일</span>
+						<span class="uk-text-middle fonted">파일</span>
 						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
 					</h3>
 					<form action="file" method="post" enctype="multipart/form-data" class="uk-search uk-search-default">

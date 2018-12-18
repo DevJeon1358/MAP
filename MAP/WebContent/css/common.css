@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'LotteMartHappy';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff');
+}
+
+div,input,button,li{
+	font-family: 'LotteMartHappy', sans-serif;
+}
+
+.fonted{
+	font-family: 'LotteMartHappy', sans-serif;
+}
+
+#head{
+	background: #00000000;
+}
+
+#titlemargin{
+	height: 25px;
+	background: #FFFFFF;
+}

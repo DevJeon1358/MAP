@@ -22,7 +22,7 @@
 			<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
 				<div class="uk-width-1-1@m">
 					<div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-						<h3 class="uk-card-title uk-text-center">MAP</h3>
+						<h3 class="uk-card-title uk-text-center fonted">MAP</h3>
 						<form action="join" method="post">
 							<div class="uk-margin">
 								<div class="uk-inline uk-width-1-1">
