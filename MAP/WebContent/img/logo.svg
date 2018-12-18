@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#49443C;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;stroke:#49443C;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#49443C;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:#FFA348;}
+	.st4{fill:none;stroke:#49443C;stroke-width:1.5;stroke-miterlimit:10;}
+	.st5{fill:#FFCD9F;}
+</style>
+<g>
+	<polygon class="st0" points="35.7,101.6 9,108.1 9,46.2 35.7,39.7 	"/>
+	<polygon class="st0" points="36.8,101.6 63.5,108.1 63.5,46.2 36.8,39.7 	"/>
+	<polygon class="st0" points="91.2,101.6 64.5,108.1 64.5,46.2 91.2,39.7 	"/>
+	<polygon class="st0" points="92.3,101.6 119,108.1 119,46.2 92.3,39.7 	"/>
+</g>
+<g id="레이어_2">
+	<path class="st1" d="M9,78.8c0,0,17.6,7.2,26.7-11.6"/>
+</g>
+<g id="레이어_3">
+	<path class="st2" d="M36.8,67.2c0,0,3.7-8.5,16.8-5.6c0,0,19,2.9,33.6,17.5c0,0,24.2,21.7,31.8-3"/>
+</g>
+<g>
+	<g>
+		<path class="st3" d="M91.6,17.8c-9.7,0-17.5,7.8-17.5,17.5c0,9.7,13.1,21.9,17.5,21.9s17.5-12.2,17.5-21.9
+			C109.1,25.6,101.2,17.8,91.6,17.8z"/>
+	</g>
+	<g>
+		<path class="st4" d="M91.6,17.8c-9.7,0-17.5,7.8-17.5,17.5c0,9.7,13.1,21.9,17.5,21.9s17.5-12.2,17.5-21.9
+			C109.1,25.6,101.2,17.8,91.6,17.8z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<circle class="st5" cx="91.6" cy="33.9" r="5.8"/>
+	</g>
+</g>
+</svg>
