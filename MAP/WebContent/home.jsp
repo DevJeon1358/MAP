@@ -58,7 +58,7 @@
 										<div class="uk-width-expand">
 											<h3 class="uk-card-title uk-margin-remove-bottom fonted">${p.name}</h3>
 											<!-- 마감 알림 -->
-											<p class="uk-text-meta uk-margin-remove-top text-clr-red">마감 : ${p.due}</p>
+											<p class="uk-margin-remove-top text-clr-red">마감 : ${p.due}</p>
 										</div>
 									</div>
 								</div>
