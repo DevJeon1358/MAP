@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-			<title>Insert title here</title>
+			<title>MAP</title>
 				<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
 				<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css"/>
 				<script src="js/uikit.min.js"></script>

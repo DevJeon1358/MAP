@@ -10,7 +10,7 @@
 <script src="js/uikit.min.js"></script>
 <script src="js/uikit-icons.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MAP</title>
 </head>
 <body>
 <c:if test="${not empty user}">

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>MAP</title>
 		<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
 		<link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 		<script src="js/uikit.min.js"></script>
