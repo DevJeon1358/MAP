@@ -77,7 +77,7 @@
 			     </li>       
 			     <li class="uk-margin-small-bottom">
 			     	<div class="uk-margin">
-				    	<label class="uk-form-label" for="form-stacked-text">멤버 초대</label>
+				    	<label class="uk-form-label" for="members">멤버 초대 (클릭)</label>
 				        	<div class="uk-form-controls">
 				           		<input class="uk-input" id="members" type="text" name="members" onclick="popup();" value="${user.id};">
 				        	</div>
