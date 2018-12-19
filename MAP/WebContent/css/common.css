@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'LotteMartHappy';
+  font-family: 'BareunDotum';
   font-style: normal;
-  font-weight: 700;
-  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff');
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/othrs/kpa/BareunDotum/BareunDotumOTFPro2.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/orgs/othrs/kpa/BareunDotum/BareunDotumOTFPro2.woff') format('woff');
 }
 
 div,input,button,li{
-	font-family: 'LotteMartHappy', sans-serif;
+	font-family: 'BareunDotum', sans-serif;
 }
 
 .fonted{
-	font-family: 'LotteMartHappy', sans-serif;
+	font-family: 'BareunDotum', sans-serif;
 }
 
 #head{
