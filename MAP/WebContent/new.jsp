@@ -11,6 +11,24 @@
 		<link rel="stylesheet" type="text/css" href="css/new.css"/>
 		<script src="js/uikit-icons.min.js"></script>
 		<script src="js/jquery.js"></script>
+		<script>
+			function check(){
+				if(document.newform.projectname.value == ""){
+					alert("프로젝트명을 입력해주세요.");
+					return false;
+				}
+				if(document.newform.subject.value == ""){
+					alert("과목을 입력해주세요.");
+					return false;
+				}
+				if(document.newform.endtime.value == ""){
+					alert("마감일시를 입력해주세요.");
+					return false;
+				}
+				return true;
+				
+			}
+</script>
 	</head>
 	<body>
 		<c:if test="${empty user}">
@@ -19,7 +37,7 @@
 		<jsp:include page="head.jsp" flush="flase"/>
 		<div class="uk-align-center uk-width-1-2">
 		<h2 class="uk-text-primary fonted">새 프로젝트 등록</h2>
-		<form id="newform" action="new" method="post">
+		<form id="newform" action="new" method="post" name="newform">
 			<ul class="uk-list uk-list-striped">
 				<li class="uk-margin-small-bottom">
 						<div class="uk-margin">
@@ -61,12 +79,12 @@
 			     	<div class="uk-margin">
 				    	<label class="uk-form-label" for="form-stacked-text">멤버 초대</label>
 				        	<div class="uk-form-controls">
-				           		<input class="uk-input" id="members" type="text" name="members" onclick="popup();" placeholder="추가할 멤버를 입력해주세요">
+				           		<input class="uk-input" id="members" type="text" name="members" onclick="popup();" value="${user.id};">
 				        	</div>
 				   	</div>
 				</li>
 				<li>
-					<input type="submit" value="등록" class="uk-button uk-button-primary">
+					<input type="submit" value="등록" onClick="return check()" class="uk-button uk-button-primary">
 				</li>	
 			</ul>
 		</form>   
