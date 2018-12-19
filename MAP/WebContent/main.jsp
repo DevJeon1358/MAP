@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/main.css" />
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
+    <script src="js/jquery.js"></script>
 </head>
 
 <body>
@@ -37,25 +38,25 @@
             <!--마감일-->
             <div class="fl-left uk-margin-left uk-height-2-3 uk-margin-remove-left">
                 <div class="uk-card uk-card-default uk-card-body uk-height-2-3 uk-card-hover">
-                    <h3 class="uk-card-title uk-card-large fonted">마감일 까지 남은 시간</h3>
+                    <h3 class="uk-card-title uk-card-large fonted">마감일까지 남은 시간</h3>
                     <div id="time" class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2018-12-18T02:50:32+00:00">
                         <div>
-                            <div id="time-day" class="uk-countdown-number uk-countdown-days"></div>
+                            <div id="time-day" class="uk-countdown-number uk-countdown-days">00</div>
                             <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Days</div>
                         </div>
                         <div class="uk-countdown-separator">:</div>
                         <div>
-                            <div id="time-hour" class="uk-countdown-number uk-countdown-hours"></div>
+                            <div id="time-hour" class="uk-countdown-number uk-countdown-hours">00</div>
                             <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>
                         </div>
                         <div class="uk-countdown-separator">:</div>
                         <div>
-                            <div id="time-minute" class="uk-countdown-number uk-countdown-minutes"></div>
+                            <div id="time-minute" class="uk-countdown-number uk-countdown-minutes">00</div>
                             <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>
                         </div>
                         <div class="uk-countdown-separator">:</div>
                         <div>
-                            <div id="time-second" class="uk-countdown-number uk-countdown-seconds"></div>
+                            <div id="time-second" class="uk-countdown-number uk-countdown-seconds">00</div>
                             <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>
                         </div>
                     </div>
@@ -64,6 +65,9 @@
         </div>
 
         <script>
+        	$(document).ready(function(){
+        		dayGap();
+        	});
             var ddaytimer = setInterval(dayGap, 1000)
             function dayGap() {
                 var nowday = new Date();
