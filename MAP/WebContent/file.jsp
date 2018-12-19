@@ -9,6 +9,30 @@
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
 <script src="js/uikit-icons.min.js"></script>
+<script>
+function check(){
+	if(document.fileform.memo.value == ""){
+		alert("메모를 입력해주세요.");
+		return false;
+	}
+	if(document.fileform.uploadFile.value == ""){
+		alert("파일을 선택해주세요.");
+		return false;
+	}
+	return true;
+	
+}
+
+function checkRadio(){
+	var radios = document.querySelectorAll('input[type="radio"]:checked');
+	if(radios.length>0)
+		return true;
+	else{
+		alert("파일을 선택하세요.");
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 	<div class="uk-container uk-container-expand">
@@ -24,19 +48,19 @@
 						<span class="uk-text-middle fonted">파일</span>
 						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
 					</h3>
-					<form action="file" method="post" enctype="multipart/form-data" class="uk-search uk-search-default">
+					<form action="file" method="post" name="fileform" enctype="multipart/form-data" class="uk-search uk-search-default">
 						<input class="uk-search-input" type="text" placeholder="메모" name="memo">
 						<div class="uk-margin" uk-margin>
 							<div uk-form-custom="target: true">
 								<input type="file" name="uploadFile">
 								<input class="uk-input uk-form-width-medium" type="text" placeholder="파일 선택" disabled>
 							</div>
-							<button class="uk-button uk-button-primary">등록</button>
+							<button onClick="return check()" class="uk-button uk-button-primary">등록</button>
 						</div>
 					</form>
 					<hr>
 					<form action="deletefile">
-						<input type="submit" class="uk-button uk-button-danger uk-align-right uk-button-small" value="삭제">
+						<input type="submit" onClick="return checkRadio()" class="uk-button uk-button-danger uk-align-right uk-button-small" value="삭제">
 						<table class="uk-table uk-table-divider uk-table-responsive">
 							<thead>
 								<tr>

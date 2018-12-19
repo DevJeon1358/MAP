@@ -9,6 +9,16 @@
 <link rel="stylesheet" type="text/css" href="css/uikit/uikit.min.css">
 <script src="js/uikit.min.js"></script>
 <script src="js/uikit-icons.min.js"></script>
+<script>
+function check(){
+	if(document.twitterform.comment.value == ""){
+		alert("메모를 입력해주세요.");
+		return false;
+	}
+	return true;
+	
+}
+</script>
 </head>
 <body>
 	<div class="uk-container uk-container-expand">
@@ -24,10 +34,10 @@
 						<span class="uk-text-middle fonted">타임라인</span>
 						<span class="uk-align-right uk-text-middle" uk-icon="icon: plus"></span>
 					</h3>
-					<form action="twitter" method="post">
+					<form action="twitter" method="post" name="twitterform">
 						<div>
-							<input class="uk-input uk-form-width-medium" type="text" name="comment">
-								<input type="submit" value="등록" class="uk-button uk-button-primary uk-button-default">
+							<input class="uk-input uk-form-width-medium" type="text" name="comment" >
+							<input type="submit" value="등록" onClick="return check()" class="uk-button uk-button-primary uk-button-default">
 						</div>
 					</form>
 					<hr>
